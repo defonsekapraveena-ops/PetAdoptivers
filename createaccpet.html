@@ -1,0 +1,665 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="logo.png">
+    
+
+    <title>Pet Haven | Create Account</title>
+    <style>
+        
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    background: #f7f4ed;
+
+    color: #333;
+
+}
+
+
+.page {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 30px 15px;
+
+}
+
+
+/* =========================
+   FORM CARD
+========================= */
+
+.login-card {
+
+    width: 100%;
+
+    max-width: 500px;
+
+    background: white;
+
+    padding: 38px 45px;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.10);
+
+    animation: cardAppear 0.7s ease;
+
+}
+
+
+/* =========================
+   HEADING
+========================= */
+
+.heading-area {
+
+    text-align: center;
+
+    margin-bottom: 25px;
+
+}
+
+
+.paw-circle {
+
+    width: 60px;
+
+    height: 60px;
+
+    margin: 0 auto 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #e5f4ed;
+
+    border-radius: 50%;
+
+    font-size: 28px;
+
+}
+
+
+.heading-area h2 {
+
+    font-size: 28px;
+
+    color: #264d43;
+
+    margin-bottom: 6px;
+
+}
+
+
+.heading-area p {
+
+    color: #888;
+
+    font-size: 14px;
+
+}
+
+
+/* =========================
+   INPUT GROUP
+========================= */
+
+.input-group {
+
+    margin-bottom: 15px;
+
+}
+
+
+.input-group label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    color: #40584f;
+
+}
+
+
+/* =========================
+   INPUT BOX
+========================= */
+
+.input-box {
+
+    display: flex;
+
+    align-items: center;
+
+    border: 1.5px solid #ddd;
+
+    border-radius: 11px;
+
+    padding: 0 13px;
+
+    transition: 0.3s;
+
+}
+
+
+.input-box span {
+
+    margin-right: 9px;
+
+    font-size: 15px;
+
+}
+
+
+.input-box input,
+.input-box select {
+
+    width: 100%;
+
+    border: none;
+
+    outline: none;
+
+    padding: 12px 4px;
+
+    font-size: 13px;
+
+    background: transparent;
+
+    color: #555;
+
+}
+
+
+.input-box select {
+
+    cursor: pointer;
+
+}
+
+
+.input-box:focus-within {
+
+    border-color: #4c9a7a;
+
+    box-shadow:
+        0 0 0 3px rgba(76, 154, 122, 0.12);
+
+}
+
+
+/* =========================
+   TERMS
+========================= */
+
+.terms {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin: 15px 0 20px;
+
+    font-size: 12px;
+
+    color: #777;
+
+}
+
+
+.terms input {
+
+    accent-color: #4c9a7a;
+
+    cursor: pointer;
+
+}
+
+
+.terms a {
+
+    color: #4c9a7a;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+}
+
+
+.terms a:hover {
+
+    text-decoration: underline;
+
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+#btn {
+
+    width: 100%;
+
+    border: none;
+
+    padding: 13px;
+
+    border-radius: 11px;
+
+    background: #4c9a7a;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+#btn span {
+
+    margin-left: 7px;
+
+}
+
+
+#btn:hover {
+
+    background: #397e63;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(76, 154, 122, 0.25);
+
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+.divider {
+
+    text-align: center;
+
+    margin: 20px 0 10px;
+
+    color: #999;
+
+    font-size: 12px;
+
+}
+
+
+.create-account {
+
+    display: block;
+
+    text-align: center;
+
+    padding: 11px;
+
+    border: 1.5px solid #4c9a7a;
+
+    border-radius: 11px;
+
+    color: #4c9a7a;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    font-size: 13px;
+
+    transition: 0.3s;
+
+}
+
+
+.create-account:hover {
+
+    background: #e5f4ed;
+
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes cardAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+    .page {
+
+        padding: 20px 12px;
+
+    }
+
+
+    .login-card {
+
+        padding: 28px 20px;
+
+        border-radius: 20px;
+
+    }
+
+
+    .heading-area h2 {
+
+        font-size: 24px;
+
+    }
+
+
+    .paw-circle {
+
+        width: 52px;
+
+        height: 52px;
+
+        font-size: 24px;
+
+    }
+
+}
+
+
+    </style>
+
+   
+</head>
+
+<body>
+
+    <div class="page">
+
+        <div class="login-card">
+
+            <!-- Heading -->
+
+            <div class="heading-area">
+
+                <div class="paw-circle">
+                    🐾
+                </div>
+
+                <h2>Create Account</h2>
+
+                <p>Join our pet-loving community</p>
+
+            </div>
+
+
+            <form id="Uform">
+
+
+                <!-- First Name -->
+
+                <div class="input-group">
+
+                    <label for="fname">First Name</label>
+
+                    <div class="input-box">
+
+                        <span>👤</span>
+
+                        <input
+                            id="fname"
+                            type="text"
+                            name="fname"
+                            placeholder="Enter your first name"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Last Name -->
+
+                <div class="input-group">
+
+                    <label for="lname">Last Name</label>
+
+                    <div class="input-box">
+
+                        <span>👤</span>
+
+                        <input
+                            id="lname"
+                            type="text"
+                            name="lname"
+                            placeholder="Enter your last name"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Email -->
+
+                <div class="input-group">
+
+                    <label for="email">Email Address</label>
+
+                    <div class="input-box">
+
+                        <span>✉</span>
+
+                        <input
+                            id="email"
+                            type="email"
+                            name="email"
+                            placeholder="Example@email.com"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Password -->
+
+                <div class="input-group">
+
+                    <label for="password">Password</label>
+
+                    <div class="input-box">
+
+                        <span>🔒</span>
+
+                        <input
+                            id="password"
+                            type="password"
+                            name="password"
+                            placeholder="Create a password"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Confirm Password -->
+
+                <div class="input-group">
+
+                    <label for="Cpassword">Confirm Password</label>
+
+                    <div class="input-box">
+
+                        <span>🔒</span>
+
+                        <input
+                            id="Cpassword"
+                            type="password"
+                            name="Cpassword"
+                            placeholder="Confirm your password"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Account Type -->
+
+                <div class="input-group">
+
+                    <label for="accountType">Account Type</label>
+
+                    <div class="input-box">
+
+                        <span>🐾</span>
+
+                        <select
+                            id="accountType"
+                            name="accountType"
+                            required>
+
+                            <option value="" disabled selected>
+                                Select account type
+                            </option>
+
+                            <option value="adoption">
+                                Adoption
+                            </option>
+
+                            <option value="buyer">
+                                Buyer
+                            </option>
+
+                            <option value="seller">
+                                Seller
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Terms -->
+
+                <div class="terms">
+
+                    <input
+                        id="agreement"
+                        type="checkbox"
+                        name="agreement"
+                        required>
+
+                    <label for="agreement">
+
+                        I agree to the
+                        <a href="#">Terms & Conditions</a>
+
+                    </label>
+
+                </div>
+
+
+                <!-- Create Account -->
+
+                <button id="btn" type="submit">
+
+                    Create Account
+
+                    <span>🐾</span>
+
+                </button>
+
+
+                <!-- Login -->
+
+                <div class="divider">
+                    Already have an account?
+                </div>
+
+                <a href="login.html" class="create-account">
+                    Login to Your Account
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+   
+</body>
+
+</html>

@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Adoptivers | Find Your Perfect Pet</title>
+
+    <style>
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f4ed;
+            color: #333;
+            transition: 0.3s;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        header {
+            width: 100%;
+            height: 75px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            background: white;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+
+        /* LOGO */
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #264d43;
+        }
+
+        .logo::before {
+            content: "🐾 ";
+        }
+
+
+        /* NAVIGATION */
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #40584f;
+            font-size: 15px;
+            font-weight: 600;
+
+            position: relative;
+
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #264d43;
+        }
+
+        nav a::after {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            bottom: -7px;
+
+            width: 0;
+            height: 2px;
+
+            background: #4c9a7a;
+
+            transition: 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+
+        /* =========================
+           DARK MODE BUTTON
+        ========================= */
+
+        .theme-toggle {
+
+            border: none;
+
+            background: #e5f4ed;
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            font-size: 18px;
+
+            transition: 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(20deg);
+        }
+
+
+        /* =========================
+           HERO SECTION
+        ========================= */
+
+        .hero {
+
+            min-height: 600px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 60px 10%;
+
+            background:
+                linear-gradient(
+                    rgba(38, 77, 67, 0.55),
+                    rgba(38, 77, 67, 0.55)
+                ),
+                url("images/homebanner.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            color: white;
+        }
+
+
+        .hero-content {
+
+            max-width: 650px;
+
+            animation: slideUp 1s ease;
+        }
+
+
+        .hero-content h1 {
+
+            font-size: 55px;
+
+            margin-bottom: 20px;
+
+            line-height: 1.1;
+        }
+
+
+        .hero-content p {
+
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            margin-bottom: 30px;
+
+            max-width: 550px;
+        }
+
+
+        /* BUTTONS */
+
+        .hero-buttons {
+
+            display: flex;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .btn {
+
+            padding: 14px 25px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+
+        .primary-btn {
+
+            background: #4c9a7a;
+
+            color: white;
+        }
+
+        .primary-btn:hover {
+
+            background: #397e63;
+
+            transform: translateY(-3px);
+        }
+
+
+        .secondary-btn {
+
+            border: 2px solid white;
+
+            color: white;
+        }
+
+        .secondary-btn:hover {
+
+            background: white;
+
+            color: #264d43;
+        }
+
+
+        /* =========================
+           INTRO
+        ========================= */
+
+        .intro {
+
+            text-align: center;
+
+            padding: 80px 10%;
+        }
+
+        .intro h2 {
+
+            font-size: 35px;
+
+            color: #264d43;
+
+            margin-bottom: 15px;
+        }
+
+        .intro p {
+
+            max-width: 700px;
+
+            margin: auto;
+
+            line-height: 1.7;
+
+            color: #666;
+        }
+
+
+        /* =========================
+           PET CATEGORIES
+        ========================= */
+
+        .categories {
+
+            padding: 30px 10% 80px;
+
+            text-align: center;
+        }
+
+        .categories h2 {
+
+            font-size: 32px;
+
+            color: #264d43;
+
+            margin-bottom: 35px;
+        }
+
+
+        .category-container {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(180px, 1fr));
+
+            gap: 25px;
+        }
+
+
+        .category-card {
+
+            background: white;
+
+            padding: 35px 20px;
+
+            border-radius: 20px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,0.06);
+        }
+
+
+        .category-card:hover {
+
+            transform: translateY(-10px);
+
+            box-shadow:
+                0 15px 30px rgba(0,0,0,0.12);
+        }
+
+
+        .category-card .emoji {
+
+            font-size: 50px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .category-card h3 {
+
+            color: #264d43;
+
+            margin-bottom: 8px;
+        }
+
+        .category-card p {
+
+            font-size: 13px;
+
+            color: #777;
+        }
+
+
+        /* =========================
+           WHY CHOOSE US
+        ========================= */
+
+        .why {
+
+            background: #e5f4ed;
+
+            padding: 80px 10%;
+
+            text-align: center;
+        }
+
+
+        .why h2 {
+
+            color: #264d43;
+
+            font-size: 32px;
+
+            margin-bottom: 45px;
+        }
+
+
+        .why-container {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 30px;
+        }
+
+
+        .why-card {
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 20px;
+        }
+
+
+        .why-card span {
+
+            font-size: 40px;
+
+            display: block;
+
+            margin-bottom: 15px;
+        }
+
+
+        .why-card h3 {
+
+            color: #264d43;
+
+            margin-bottom: 10px;
+        }
+
+
+        .why-card p {
+
+            color: #666;
+
+            line-height: 1.6;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           CALL TO ACTION
+        ========================= */
+
+        .cta {
+
+            padding: 90px 10%;
+
+            text-align: center;
+
+            background: #264d43;
+
+            color: white;
+        }
+
+
+        .cta h2 {
+
+            font-size: 35px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .cta p {
+
+            margin-bottom: 30px;
+
+            color: #e5f4ed;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            background: #1d3831;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+        }
+
+
+        /* =========================
+           MOBILE MENU
+        ========================= */
+
+        .menu-toggle {
+
+            display: none;
+
+            border: none;
+
+            background: transparent;
+
+            cursor: pointer;
+        }
+
+
+        .menu-toggle span {
+
+            display: block;
+
+            width: 25px;
+
+            height: 3px;
+
+            background: #264d43;
+
+            margin: 5px;
+
+            border-radius: 3px;
+        }
+
+
+        /* =========================
+           ANIMATION
+        ========================= */
+
+        @keyframes slideUp {
+
+            from {
+
+                opacity: 0;
+
+                transform: translateY(30px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: translateY(0);
+            }
+        }
+
+
+        /* =========================
+           DARK MODE
+        ========================= */
+
+        body.dark {
+
+            background: #1e2925;
+
+            color: white;
+        }
+
+
+        body.dark header {
+
+            background: #263630;
+        }
+
+
+        body.dark nav a {
+
+            color: white;
+        }
+
+
+        body.dark .logo {
+
+            color: #8fd6b8;
+        }
+
+
+        body.dark .intro h2,
+        body.dark .categories h2 {
+
+            color: #8fd6b8;
+        }
+
+
+        body.dark .intro p {
+
+            color: #ccc;
+        }
+
+
+        body.dark .category-card {
+
+            background: #2c3b35;
+
+            color: white;
+        }
+
+
+        body.dark .category-card h3 {
+
+            color: #8fd6b8;
+        }
+
+
+        body.dark .category-card p {
+
+            color: #ccc;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .menu-toggle {
+
+                display: block;
+            }
+
+
+            nav {
+
+                display: none;
+
+                position: absolute;
+
+                top: 75px;
+
+                left: 0;
+
+                width: 100%;
+
+                background: white;
+
+                flex-direction: column;
+
+                padding: 25px;
+
+                text-align: center;
+            }
+
+
+            nav.active {
+
+                display: flex;
+            }
+
+
+            body.dark nav {
+
+                background: #263630;
+            }
+
+
+            .hero {
+
+                min-height: 550px;
+
+                text-align: center;
+
+                justify-content: center;
+            }
+
+
+            .hero-content h1 {
+
+                font-size: 40px;
+            }
+
+
+            .hero-buttons {
+
+                justify-content: center;
+            }
+        }
+
+
+        @media (max-width: 500px) {
+
+            header {
+
+                padding: 0 5%;
+            }
+
+
+            .logo {
+
+                font-size: 20px;
+            }
+
+
+            .hero-content h1 {
+
+                font-size: 34px;
+            }
+
+
+            .hero-content p {
+
+                font-size: 15px;
+            }
+
+
+            .intro h2,
+            .categories h2,
+            .why h2 {
+
+                font-size: 27px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <header>
+
+        <div class="logo">Adoptivers</div>
+
+
+        <!-- MOBILE MENU -->
+
+        <button class="menu-toggle" id="menuToggle">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+        <!-- NAVIGATION -->
+
+        <nav id="navbar">
+
+            <a href="homepage.html">Home</a>
+
+            <a href="Buying.html">Buying</a>
+
+            <a href="selling.html">Selling</a>
+
+            <a href="petinfo.html">Pet Information</a>
+
+            <a href="contact.html">Contact</a>
+
+        </nav>
+
+
+        <!-- DARK MODE -->
+
+        <button id="themeToggle" class="theme-toggle">
+            🌙
+        </button>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Find Your Perfect
+                <br>
+                Best Friend 🐾
+            </h1>
+
+            <p>
+                Welcome to Adoptivers! Discover loving pets,
+                find your perfect companion, or give a pet
+                the loving home they deserve.
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a href="Buying.html" class="btn primary-btn">
+                    Find a Pet 🐾
+                </a>
+
+                <a href="selling.html" class="btn secondary-btn">
+                    List Your Pet
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+   
+    <section class="intro">
+
+        <h2>A Better Place for Pets and People 🐾</h2>
+
+        <p>
+            Adoptivers connects pet lovers with wonderful animals
+            looking for new homes. Whether you are searching for
+            your next furry friend or looking for a loving home
+            for a pet, we are here to help.
+        </p>
+
+    </section>
+
+
+   
+
+    <section class="categories">
+
+        <h2>Explore Our Pets</h2>
+
+
+        <div class="category-container">
+
+
+            <div class="category-card">
+
+                <div class="emoji">🐶</div>
+
+                <h3>Dogs</h3>
+
+                <p>
+                    Loyal companions waiting for a loving home.
+                </p>
+
+            </div>
+
+
+            <div class="category-card">
+
+                <div class="emoji">🐱</div>
+
+                <h3>Cats</h3>
+
+                <p>
+                    Find your perfect feline companion.
+                </p>
+
+            </div>
+
+
+            <div class="category-card">
+
+                <div class="emoji">🐰</div>
+
+                <h3>Rabbits</h3>
+
+                <p>
+                    Cute and lovable little friends.
+                </p>
+
+            </div>
+
+
+            <div class="category-card">
+
+                <div class="emoji">🐦</div>
+
+                <h3>Birds</h3>
+
+                <p>
+                    Discover beautiful feathered companions.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+   <!--Why choose us-->>
+
+    <section class="why">
+
+        <h2>Why Choose Adoptivers?</h2>
+
+
+        <div class="why-container">
+
+
+            <div class="why-card">
+
+                <span>❤️</span>
+
+                <h3>Loving Homes</h3>
+
+                <p>
+                    Helping pets find safe and caring families.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <span>🐾</span>
+
+                <h3>Easy to Use</h3>
+
+                <p>
+                    Easily browse, buy, sell, or adopt pets.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <span>🤝</span>
+
+                <h3>Pet Community</h3>
+
+                <p>
+                    Connecting responsible pet owners and animal lovers.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA
+    ========================== -->
+
+    <section class="cta">
+
+        <h2>Ready to Meet Your New Best Friend? 🐶</h2>
+
+        <p>
+            Start exploring pets and find the perfect companion today!
+        </p>
+
+        <a href="Buying.html" class="btn primary-btn">
+            Explore Pets 🐾
+        </a>
+
+    </section>
+
+
+    
+    <!--footer-->>
+  
+
+    <footer>
+
+        <p>
+            © 2026 Adoptivers 🐾 | Connecting Pets With Loving Homes
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        // MOBILE MENU
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const navbar =
+            document.getElementById("navbar");
+
+
+        menuToggle.addEventListener("click", function () {
+
+            navbar.classList.toggle("active");
+
+        });
+
+
+        // DARK MODE
+
+        const themeToggle =
+            document.getElementById("themeToggle");
+
+
+        themeToggle.addEventListener("click", function () {
+
+            document.body.classList.toggle("dark");
+
+
+            // Change icon
+
+            if (document.body.classList.contains("dark")) {
+
+                themeToggle.innerHTML = "☀️";
+
+            }
+
+            else {
+
+                themeToggle.innerHTML = "🌙";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

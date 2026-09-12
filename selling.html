@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Adoptivers | Sell Your Pet</title>
+
+    <style>
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f4ed;
+            color: #333;
+            transition: 0.3s;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        header {
+            width: 100%;
+            height: 75px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            background: white;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #264d43;
+        }
+
+        .logo::before {
+            content: "🐾 ";
+        }
+
+
+        /* NAVIGATION */
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+
+        nav a {
+            text-decoration: none;
+            color: #40584f;
+            font-size: 15px;
+            font-weight: 600;
+            position: relative;
+            transition: 0.3s;
+        }
+
+
+        nav a:hover,
+        nav a.active {
+            color: #4c9a7a;
+        }
+
+
+        nav a::after {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            bottom: -7px;
+
+            width: 0;
+            height: 2px;
+
+            background: #4c9a7a;
+
+            transition: 0.3s;
+        }
+
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+
+        /* =========================
+           THEME BUTTON
+        ========================= */
+
+        .theme-toggle {
+
+            border: none;
+            background: #e5f4ed;
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            font-size: 18px;
+
+            transition: 0.3s;
+        }
+
+
+        .theme-toggle:hover {
+            transform: rotate(20deg);
+        }
+
+
+        /* =========================
+           MOBILE MENU
+        ========================= */
+
+        .menu-toggle {
+
+            display: none;
+
+            border: none;
+            background: transparent;
+
+            cursor: pointer;
+        }
+
+
+        .menu-toggle span {
+
+            display: block;
+
+            width: 25px;
+            height: 3px;
+
+            background: #264d43;
+
+            margin: 5px;
+
+            border-radius: 3px;
+        }
+
+
+        /* =========================
+           PAGE HERO
+        ========================= */
+
+        .page-hero {
+
+            text-align: center;
+
+            padding: 70px 20px 50px;
+
+            background:
+                linear-gradient(
+                    rgba(38, 77, 67, 0.90),
+                    rgba(38, 77, 67, 0.85)
+                );
+
+            color: white;
+        }
+
+
+        .page-hero h1 {
+
+            font-size: 42px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .page-hero p {
+
+            font-size: 17px;
+
+            color: #e5f4ed;
+
+            max-width: 600px;
+
+            margin: auto;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           SELLING SECTION
+        ========================= */
+
+        .selling-section {
+
+            padding: 70px 10%;
+
+            display: flex;
+
+            justify-content: center;
+        }
+
+
+        .form-container {
+
+            width: 100%;
+            max-width: 900px;
+
+            background: white;
+
+            padding: 45px;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .form-title {
+
+            text-align: center;
+
+            margin-bottom: 35px;
+        }
+
+
+        .form-title h2 {
+
+            color: #264d43;
+
+            font-size: 28px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .form-title p {
+
+            color: #777;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           FORM SECTIONS
+        ========================= */
+
+        .form-section {
+
+            margin-bottom: 35px;
+
+            padding-bottom: 30px;
+
+            border-bottom: 1px solid #eee;
+        }
+
+
+        .form-section:last-child {
+
+            border-bottom: none;
+        }
+
+
+        .section-title {
+
+            font-size: 19px;
+
+            color: #264d43;
+
+            margin-bottom: 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+        }
+
+
+        /* =========================
+           IMAGE UPLOAD
+        ========================= */
+
+        .image-upload {
+
+            width: 100%;
+
+            min-height: 250px;
+
+            border: 2px dashed #4c9a7a;
+
+            border-radius: 18px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            cursor: pointer;
+
+            background: #f8fcfa;
+
+            overflow: hidden;
+
+            transition: 0.3s;
+
+            position: relative;
+        }
+
+
+        .image-upload:hover {
+
+            background: #e5f4ed;
+        }
+
+
+        .upload-icon {
+
+            font-size: 50px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .image-upload p {
+
+            color: #666;
+
+            font-size: 14px;
+        }
+
+
+        .image-upload small {
+
+            color: #999;
+
+            margin-top: 7px;
+        }
+
+
+        #imagePreview {
+
+            display: none;
+
+            width: 100%;
+
+            height: 300px;
+
+            object-fit: cover;
+        }
+
+
+        #petImage {
+
+            display: none;
+        }
+
+
+        /* =========================
+           FORM GRID
+        ========================= */
+
+        .form-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .form-group {
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        .form-group.full-width {
+
+            grid-column: span 2;
+        }
+
+
+        label {
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            color: #40584f;
+
+            margin-bottom: 8px;
+        }
+
+
+        input,
+        select,
+        textarea {
+
+            width: 100%;
+
+            padding: 13px 15px;
+
+            border: 1.5px solid #ddd;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            font-size: 14px;
+
+            font-family: Arial, sans-serif;
+
+            background: white;
+
+            color: #555;
+
+            transition: 0.3s;
+        }
+
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+
+            border-color: #4c9a7a;
+
+            box-shadow:
+                0 0 0 3px rgba(76, 154, 122, 0.12);
+        }
+
+
+        textarea {
+
+            min-height: 120px;
+
+            resize: vertical;
+        }
+
+
+        /* =========================
+           SUBMIT BUTTON
+        ========================= */
+
+        .submit-area {
+
+            text-align: center;
+
+            margin-top: 20px;
+        }
+
+
+        .submit-btn {
+
+            border: none;
+
+            background: #4c9a7a;
+
+            color: white;
+
+            padding: 15px 40px;
+
+            border-radius: 30px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        .submit-btn:hover {
+
+            background: #397e63;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 25px rgba(76, 154, 122, 0.3);
+        }
+
+
+        /* =========================
+           SUCCESS MESSAGE
+        ========================= */
+
+        .success-message {
+
+            display: none;
+
+            margin-top: 25px;
+
+            padding: 15px;
+
+            background: #e5f4ed;
+
+            border-left: 5px solid #4c9a7a;
+
+            border-radius: 8px;
+
+            color: #264d43;
+
+            text-align: center;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            background: #1d3831;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+        }
+
+
+        /* =========================
+           DARK MODE
+        ========================= */
+
+        body.dark {
+
+            background: #1e2925;
+
+            color: white;
+        }
+
+
+        body.dark header {
+
+            background: #263630;
+        }
+
+
+        body.dark .logo {
+
+            color: #8fd6b8;
+        }
+
+
+        body.dark nav a {
+
+            color: white;
+        }
+
+
+        body.dark .form-container {
+
+            background: #2c3b35;
+        }
+
+
+        body.dark .form-title h2,
+        body.dark .section-title {
+
+            color: #8fd6b8;
+        }
+
+
+        body.dark .form-title p {
+
+            color: #ccc;
+        }
+
+
+        body.dark label {
+
+            color: #d6e6df;
+        }
+
+
+        body.dark input,
+        body.dark select,
+        body.dark textarea {
+
+            background: #374941;
+
+            border-color: #4b6158;
+
+            color: white;
+        }
+
+
+        body.dark .image-upload {
+
+            background: #263630;
+        }
+
+
+        body.dark .image-upload p {
+
+            color: #ddd;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .menu-toggle {
+
+                display: block;
+            }
+
+
+            nav {
+
+                display: none;
+
+                position: absolute;
+
+                top: 75px;
+
+                left: 0;
+
+                width: 100%;
+
+                background: white;
+
+                flex-direction: column;
+
+                padding: 25px;
+
+                text-align: center;
+            }
+
+
+            nav.active {
+
+                display: flex;
+            }
+
+
+            body.dark nav {
+
+                background: #263630;
+            }
+
+
+            .selling-section {
+
+                padding: 50px 5%;
+            }
+
+
+            .form-container {
+
+                padding: 30px 20px;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .page-hero h1 {
+
+                font-size: 32px;
+            }
+
+
+            .form-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .form-group.full-width {
+
+                grid-column: span 1;
+            }
+
+
+            .theme-toggle {
+
+                margin-left: auto;
+
+                margin-right: 10px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION BAR
+    ========================== -->
+
+    <header>
+
+        <div class="logo">Adoptivers</div>
+
+
+        <button class="menu-toggle"
+                id="menuToggle"
+                aria-label="Toggle navigation">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+        <nav id="navbar">
+
+            <a href="homepage.html">Home</a>
+
+            <a href="Buying.html">Buying</a>
+
+            <a href="selling.html" class="active">Selling</a>
+
+            <a href="petinfo.html">Pet Information</a>
+
+            <a href="contact.html">Contact</a>
+
+        </nav>
+
+
+        <button id="themeToggle"
+                class="theme-toggle"
+                aria-label="Toggle dark mode">
+
+            🌙
+
+        </button>
+
+    </header>
+
+
+
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
+
+    <section class="page-hero">
+
+        <h1>Find a Loving Home for Your Pet 🐾</h1>
+
+        <p>
+            Share your pet's details with our community and
+            connect with people looking for their perfect companion.
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         SELLING FORM
+    ========================== -->
+
+    <section class="selling-section">
+
+        <div class="form-container">
+
+
+            <div class="form-title">
+
+                <h2>🐾 Add Your Pet Listing</h2>
+
+                <p>
+                    Fill in the details below to create your pet listing.
+                </p>
+
+            </div>
+
+
+            <form id="petForm">
+
+
+                <!-- =========================
+                     PET PHOTO
+                ========================== -->
+
+                <div class="form-section">
+
+                    <h3 class="section-title">
+                        📸 Pet Photo
+                    </h3>
+
+
+                    <label class="image-upload"
+                           for="petImage">
+
+                        <div id="uploadContent">
+
+                            <div class="upload-icon">
+                                🐾
+                            </div>
+
+                            <p>
+                                Click here to upload a photo of your pet
+                            </p>
+
+                            <small>
+                                JPG, PNG or JPEG
+                            </small>
+
+                        </div>
+
+
+                        <img id="imagePreview"
+                             alt="Pet Preview">
+
+                    </label>
+
+
+                    <input type="file"
+                           id="petImage"
+                           accept="image/*"
+                           required>
+
+                </div>
+
+
+
+                <!-- =========================
+                     BASIC INFORMATION
+                ========================== -->
+
+                <div class="form-section">
+
+                    <h3 class="section-title">
+                        🐶 Basic Information
+                    </h3>
+
+
+                    <div class="form-grid">
+
+
+                        <!-- PET NAME -->
+
+                        <div class="form-group">
+
+                            <label for="petName">
+                                Pet Name
+                            </label>
+
+                            <input type="text"
+                                   id="petName"
+                                   placeholder="Enter pet name"
+                                   required>
+
+                        </div>
+
+
+
+                        <!-- CATEGORY -->
+
+                        <div class="form-group">
+
+                            <label for="petCategory">
+                                Pet Category
+                            </label>
+
+                            <select id="petCategory"
+                                    required>
+
+                                <option value="">
+                                    Select category
+                                </option>
+
+                                <option>Dog</option>
+
+                                <option>Cat</option>
+
+                                <option>Rabbit</option>
+
+                                <option>Bird</option>
+
+                                <option>Other</option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- BREED -->
+
+                        <div class="form-group">
+
+                            <label for="breed">
+                                Breed
+                            </label>
+
+                            <input type="text"
+                                   id="breed"
+                                   placeholder="Example: Golden Retriever"
+                                   required>
+
+                        </div>
+
+
+
+                        <!-- AGE -->
+
+                        <div class="form-group">
+
+                            <label for="age">
+                                Age
+                            </label>
+
+                            <input type="number"
+                                   id="age"
+                                   min="0"
+                                   placeholder="Age in years"
+                                   required>
+
+                        </div>
+
+
+
+                        <!-- GENDER -->
+
+                        <div class="form-group">
+
+                            <label for="gender">
+                                Gender
+                            </label>
+
+                            <select id="gender"
+                                    required>
+
+                                <option value="">
+                                    Select gender
+                                </option>
+
+                                <option>Male</option>
+
+                                <option>Female</option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- SIZE -->
+
+                        <div class="form-group">
+
+                            <label for="size">
+                                Size
+                            </label>
+
+                            <select id="size"
+                                    required>
+
+                                <option value="">
+                                    Select size
+                                </option>
+
+                                <option>Small</option>
+
+                                <option>Medium</option>
+
+                                <option>Large</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+                     PET DESCRIPTION
+                ========================== -->
+
+                <div class="form-section">
+
+                    <h3 class="section-title">
+                        📝 About Your Pet
+                    </h3>
+
+
+                    <div class="form-grid">
+
+
+                        <!-- DESCRIPTION -->
+
+                        <div class="form-group full-width">
+
+                            <label for="description">
+                                Pet Description
+                            </label>
+
+                            <textarea id="description"
+                                      placeholder="Tell us about your pet's personality, behaviour and special qualities..."
+                                      required></textarea>
+
+                        </div>
+
+
+
+                        <!-- HEALTH -->
+
+                        <div class="form-group full-width">
+
+                            <label for="health">
+                                Health & Vaccination Information
+                            </label>
+
+                            <textarea id="health"
+                                      placeholder="Example: Fully vaccinated and healthy"></textarea>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+                     SELLING INFORMATION
+                ========================== -->
+
+                <div class="form-section">
+
+                    <h3 class="section-title">
+                        💰 Selling Information
+                    </h3>
+
+
+                    <div class="form-grid">
+
+
+                        <!-- PRICE -->
+
+                        <div class="form-group">
+
+                            <label for="price">
+                                Price (Rs.)
+                            </label>
+
+                            <input type="number"
+                                   id="price"
+                                   min="0"
+                                   placeholder="Enter price"
+                                   required>
+
+                        </div>
+
+
+
+                        <!-- LOCATION -->
+
+                        <div class="form-group">
+
+                            <label for="location">
+                                Location
+                            </label>
+
+                            <input type="text"
+                                   id="location"
+                                   placeholder="Example: Colombo"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+                     CONTACT INFORMATION
+                ========================== -->
+
+                <div class="form-section">
+
+                    <h3 class="section-title">
+                        📞 Contact Information
+                    </h3>
+
+
+                    <div class="form-grid">
+
+
+                        <!-- SELLER NAME -->
+
+                        <div class="form-group">
+
+                            <label for="sellerName">
+                                Your Name
+                            </label>
+
+                            <input type="text"
+                                   id="sellerName"
+                                   placeholder="Enter your name"
+                                   required>
+
+                        </div>
+
+
+
+                        <!-- PHONE -->
+
+                        <div class="form-group">
+
+                            <label for="phone">
+                                Contact Number
+                            </label>
+
+                            <input type="tel"
+                                   id="phone"
+                                   placeholder="Enter your phone number"
+                                   required>
+
+                        </div>
+
+
+
+                        <!-- EMAIL -->
+
+                        <div class="form-group full-width">
+
+                            <label for="sellerEmail">
+                                Email Address
+                            </label>
+
+                            <input type="email"
+                                   id="sellerEmail"
+                                   placeholder="Enter your email address"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+                     SUBMIT
+                ========================== -->
+
+                <div class="submit-area">
+
+                    <button type="submit"
+                            class="submit-btn">
+
+                        🐾 Submit Pet Listing
+
+                    </button>
+
+
+                    <div class="success-message"
+                         id="successMessage">
+
+                        🎉 Your pet listing has been submitted successfully!
+
+                    </div>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Adoptivers 🐾 | Connecting Pets With Loving Homes
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+
+        /* =========================
+           MOBILE MENU
+        ========================== */
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const navbar =
+            document.getElementById("navbar");
+
+
+        menuToggle.addEventListener("click", function () {
+
+            navbar.classList.toggle("active");
+
+        });
+
+
+
+        /* =========================
+           DARK MODE
+        ========================== */
+
+        const themeToggle =
+            document.getElementById("themeToggle");
+
+
+        themeToggle.addEventListener("click", function () {
+
+            document.body.classList.toggle("dark");
+
+
+            if (document.body.classList.contains("dark")) {
+
+                themeToggle.innerHTML = "☀️";
+
+            } else {
+
+                themeToggle.innerHTML = "🌙";
+
+            }
+
+        });
+
+
+
+        /* =========================
+           IMAGE PREVIEW
+        ========================== */
+
+        const petImage =
+            document.getElementById("petImage");
+
+        const imagePreview =
+            document.getElementById("imagePreview");
+
+        const uploadContent =
+            document.getElementById("uploadContent");
+
+
+        petImage.addEventListener("change", function () {
+
+            const file = this.files[0];
+
+
+            if (file) {
+
+                const reader = new FileReader();
+
+
+                reader.onload = function (event) {
+
+                    imagePreview.src =
+                        event.target.result;
+
+
+                    imagePreview.style.display =
+                        "block";
+
+
+                    uploadContent.style.display =
+                        "none";
+
+                };
+
+
+                reader.readAsDataURL(file);
+
+            }
+
+        });
+
+
+
+        /* =========================
+           FORM SUBMISSION
+        ========================== */
+
+        const petForm =
+            document.getElementById("petForm");
+
+        const successMessage =
+            document.getElementById("successMessage");
+
+
+        petForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+
+            successMessage.style.display =
+                "block";
+
+
+            petForm.reset();
+
+
+            imagePreview.style.display =
+                "none";
+
+
+            uploadContent.style.display =
+                "block";
+
+
+            window.scrollTo({
+
+                top: document.body.scrollHeight,
+
+                behavior: "smooth"
+
+            });
+
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>
+```

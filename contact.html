@@ -1,0 +1,1273 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Adoptivers | Contact Us</title>
+
+    <style>
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f4ed;
+            color: #333;
+            transition: 0.3s;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        header {
+            width: 100%;
+            height: 75px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            background: white;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #264d43;
+        }
+
+
+        .logo::before {
+            content: "🐾 ";
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+
+        nav a {
+            text-decoration: none;
+
+            color: #40584f;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            position: relative;
+
+            transition: 0.3s;
+        }
+
+
+        nav a:hover,
+        nav a.active {
+            color: #4c9a7a;
+        }
+
+
+        nav a::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: -7px;
+
+            width: 0;
+
+            height: 2px;
+
+            background: #4c9a7a;
+
+            transition: 0.3s;
+        }
+
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+
+        /* =========================
+           DARK MODE BUTTON
+        ========================= */
+
+        .theme-toggle {
+
+            border: none;
+
+            background: #e5f4ed;
+
+            width: 42px;
+
+            height: 42px;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            font-size: 18px;
+
+            transition: 0.3s;
+        }
+
+
+        .theme-toggle:hover {
+            transform: rotate(20deg);
+        }
+
+
+        /* =========================
+           MOBILE MENU
+        ========================= */
+
+        .menu-toggle {
+
+            display: none;
+
+            border: none;
+
+            background: transparent;
+
+            cursor: pointer;
+        }
+
+
+        .menu-toggle span {
+
+            display: block;
+
+            width: 25px;
+
+            height: 3px;
+
+            background: #264d43;
+
+            margin: 5px;
+
+            border-radius: 3px;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .contact-hero {
+
+            background:
+                linear-gradient(
+                    rgba(38, 77, 67, 0.92),
+                    rgba(38, 77, 67, 0.88)
+                );
+
+            color: white;
+
+            text-align: center;
+
+            padding: 70px 20px 60px;
+        }
+
+
+        .contact-hero h1 {
+
+            font-size: 42px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .contact-hero p {
+
+            max-width: 650px;
+
+            margin: auto;
+
+            line-height: 1.7;
+
+            color: #e5f4ed;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           CONTACT SECTION
+        ========================= */
+
+        .contact-section {
+
+            padding: 70px 8%;
+
+            display: grid;
+
+            grid-template-columns: 0.8fr 1.2fr;
+
+            gap: 50px;
+
+            max-width: 1200px;
+
+            margin: auto;
+        }
+
+
+        /* =========================
+           LEFT SIDE
+        ========================= */
+
+        .contact-info h2 {
+
+            color: #264d43;
+
+            font-size: 30px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .contact-info > p {
+
+            color: #666;
+
+            line-height: 1.7;
+
+            margin-bottom: 30px;
+        }
+
+
+        .info-card {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            background: white;
+
+            padding: 18px;
+
+            border-radius: 15px;
+
+            margin-bottom: 15px;
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.06);
+
+            transition: 0.3s;
+        }
+
+
+        .info-card:hover {
+
+            transform: translateX(5px);
+        }
+
+
+        .info-icon {
+
+            width: 50px;
+
+            height: 50px;
+
+            min-width: 50px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #e5f4ed;
+
+            border-radius: 50%;
+
+            font-size: 22px;
+        }
+
+
+        .info-card h3 {
+
+            color: #264d43;
+
+            font-size: 15px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .info-card p {
+
+            color: #777;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           SOCIAL MEDIA
+        ========================= */
+
+        .social-section {
+
+            margin-top: 30px;
+        }
+
+
+        .social-section h3 {
+
+            color: #264d43;
+
+            margin-bottom: 15px;
+        }
+
+
+        .social-links {
+
+            display: flex;
+
+            gap: 10px;
+        }
+
+
+        .social-links a {
+
+            width: 42px;
+
+            height: 42px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-decoration: none;
+
+            background: #e5f4ed;
+
+            color: #264d43;
+
+            font-size: 18px;
+
+            transition: 0.3s;
+        }
+
+
+        .social-links a:hover {
+
+            background: #4c9a7a;
+
+            color: white;
+
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================
+           FORM
+        ========================= */
+
+        .contact-form {
+
+            background: white;
+
+            padding: 40px;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .contact-form h2 {
+
+            color: #264d43;
+
+            font-size: 28px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .contact-form .form-intro {
+
+            color: #777;
+
+            font-size: 14px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .form-group {
+
+            margin-bottom: 20px;
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            color: #40584f;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+        }
+
+
+        input,
+        select,
+        textarea {
+
+            width: 100%;
+
+            padding: 13px 15px;
+
+            border: 1.5px solid #ddd;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 14px;
+
+            background: white;
+
+            color: #555;
+
+            transition: 0.3s;
+        }
+
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+
+            border-color: #4c9a7a;
+
+            box-shadow:
+                0 0 0 3px rgba(76, 154, 122, 0.12);
+        }
+
+
+        textarea {
+
+            min-height: 150px;
+
+            resize: vertical;
+        }
+
+
+        /* =========================
+           SEND BUTTON
+        ========================= */
+
+        .send-btn {
+
+            width: 100%;
+
+            border: none;
+
+            padding: 14px;
+
+            border-radius: 12px;
+
+            background: #4c9a7a;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        .send-btn:hover {
+
+            background: #397e63;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px rgba(76, 154, 122, 0.25);
+        }
+
+
+        /* =========================
+           SUCCESS MESSAGE
+        ========================= */
+
+        .success-message {
+
+            display: none;
+
+            margin-top: 20px;
+
+            padding: 14px;
+
+            background: #e5f4ed;
+
+            color: #264d43;
+
+            border-left: 5px solid #4c9a7a;
+
+            border-radius: 8px;
+
+            text-align: center;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            background: #1d3831;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+        }
+
+
+        footer p {
+
+            font-size: 13px;
+
+            color: #dce9e4;
+        }
+
+
+        /* =========================
+           DARK MODE
+        ========================= */
+
+        body.dark {
+
+            background: #1e2925;
+
+            color: white;
+        }
+
+
+        body.dark header {
+
+            background: #263630;
+        }
+
+
+        body.dark .logo {
+
+            color: #8fd6b8;
+        }
+
+
+        body.dark nav a {
+
+            color: white;
+        }
+
+
+        body.dark .contact-info h2,
+        body.dark .social-section h3 {
+
+            color: #8fd6b8;
+        }
+
+
+        body.dark .contact-info > p {
+
+            color: #ccc;
+        }
+
+
+        body.dark .info-card {
+
+            background: #2c3b35;
+        }
+
+
+        body.dark .info-card h3 {
+
+            color: #8fd6b8;
+        }
+
+
+        body.dark .info-card p {
+
+            color: #ccc;
+        }
+
+
+        body.dark .contact-form {
+
+            background: #2c3b35;
+        }
+
+
+        body.dark .contact-form h2 {
+
+            color: #8fd6b8;
+        }
+
+
+        body.dark .contact-form .form-intro {
+
+            color: #ccc;
+        }
+
+
+        body.dark .form-group label {
+
+            color: #d6e6df;
+        }
+
+
+        body.dark input,
+        body.dark select,
+        body.dark textarea {
+
+            background: #374941;
+
+            border-color: #4b6158;
+
+            color: white;
+        }
+
+
+        body.dark .social-links a {
+
+            background: #374941;
+
+            color: #8fd6b8;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 850px) {
+
+            .menu-toggle {
+                display: block;
+            }
+
+
+            nav {
+
+                display: none;
+
+                position: absolute;
+
+                top: 75px;
+
+                left: 0;
+
+                width: 100%;
+
+                background: white;
+
+                flex-direction: column;
+
+                padding: 25px;
+
+                text-align: center;
+            }
+
+
+            nav.active {
+                display: flex;
+            }
+
+
+            body.dark nav {
+                background: #263630;
+            }
+
+
+            .contact-section {
+
+                grid-template-columns: 1fr;
+
+                padding: 50px 6%;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 0 5%;
+            }
+
+
+            .logo {
+                font-size: 20px;
+            }
+
+
+            .contact-hero h1 {
+                font-size: 32px;
+            }
+
+
+            .contact-form {
+                padding: 28px 20px;
+            }
+
+
+            .contact-info h2 {
+                font-size: 27px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header>
+
+        <div class="logo">
+            Adoptivers
+        </div>
+
+
+        <button class="menu-toggle"
+                id="menuToggle"
+                aria-label="Toggle navigation">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+        <nav id="navbar">
+
+            <a href="homepage.html">
+                Home
+            </a>
+
+            <a href="Buying.html">
+                Buying
+            </a>
+
+            <a href="selling.html">
+                Selling
+            </a>
+
+            <a href="petinfo.html">
+                Pet Information
+            </a>
+
+            <a href="contact.html" class="active">
+                Contact
+            </a>
+
+        </nav>
+
+
+        <button id="themeToggle"
+                class="theme-toggle"
+                aria-label="Toggle dark mode">
+
+            🌙
+
+        </button>
+
+    </header>
+
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="contact-hero">
+
+        <h1>
+            Get in Touch With Us 🐾
+        </h1>
+
+        <p>
+            Have a question about a pet, adoption, buying or selling?
+            We'd love to hear from you. Send us a message and our team
+            will get back to you.
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         CONTACT CONTENT
+    ========================== -->
+
+    <section class="contact-section">
+
+
+        <!-- =========================
+             CONTACT INFORMATION
+        ========================== -->
+
+        <div class="contact-info">
+
+            <h2>
+                Let's Talk
+            </h2>
+
+            <p>
+                Whether you need help finding a pet or have a question
+                about our services, feel free to contact us.
+            </p>
+
+
+            <!-- EMAIL -->
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    ✉️
+                </div>
+
+                <div>
+
+                    <h3>
+                        Email
+                    </h3>
+
+                    <p>
+                        hello@adoptivers.com
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PHONE -->
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    📞
+                </div>
+
+                <div>
+
+                    <h3>
+                        Phone
+                    </h3>
+
+                    <p>
+                        +94 77 123 4567
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOCATION -->
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    📍
+                </div>
+
+                <div>
+
+                    <h3>
+                        Location
+                    </h3>
+
+                    <p>
+                        Colombo, Sri Lanka
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- HOURS -->
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    🕐
+                </div>
+
+                <div>
+
+                    <h3>
+                        Opening Hours
+                    </h3>
+
+                    <p>
+                        Monday - Saturday | 9:00 AM - 6:00 PM
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SOCIAL MEDIA -->
+
+            <div class="social-section">
+
+                <h3>
+                    Follow Us
+                </h3>
+
+                <div class="social-links">
+
+                    <a href="#" aria-label="Facebook">
+                        f
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        ◎
+                    </a>
+
+                    <a href="#" aria-label="TikTok">
+                        ♪
+                    </a>
+
+                    <a href="#" aria-label="WhatsApp">
+                        ☎
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             CONTACT FORM
+        ========================== -->
+
+        <div class="contact-form">
+
+            <h2>
+                Send Us a Message 💌
+            </h2>
+
+            <p class="form-intro">
+                Fill out the form below and we'll be happy to help.
+            </p>
+
+
+            <form id="contactForm">
+
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        required>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Example@email.com"
+                        required>
+
+                </div>
+
+
+                <!-- SUBJECT -->
+
+                <div class="form-group">
+
+                    <label for="subject">
+                        Subject
+                    </label>
+
+                    <select id="subject" required>
+
+                        <option value="">
+                            Select a subject
+                        </option>
+
+                        <option>
+                            Pet Adoption
+                        </option>
+
+                        <option>
+                            Buying a Pet
+                        </option>
+
+                        <option>
+                            Selling a Pet
+                        </option>
+
+                        <option>
+                            Pet Information
+                        </option>
+
+                        <option>
+                            Technical Support
+                        </option>
+
+                        <option>
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- MESSAGE -->
+
+                <div class="form-group">
+
+                    <label for="message">
+                        Your Message
+                    </label>
+
+                    <textarea
+                        id="message"
+                        placeholder="Write your message here..."
+                        required></textarea>
+
+                </div>
+
+
+                <!-- BUTTON -->
+
+                <button
+                    type="submit"
+                    class="send-btn">
+
+                    🐾 Send Message
+
+                </button>
+
+
+                <!-- SUCCESS MESSAGE -->
+
+                <div
+                    class="success-message"
+                    id="successMessage">
+
+                    ✅ Your message has been sent successfully!
+                    Thank you for contacting Adoptivers. 🐾
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Adoptivers 🐾 |
+            Connecting Pets With Loving Homes
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+
+        /* =========================
+           MOBILE MENU
+        ========================== */
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const navbar =
+            document.getElementById("navbar");
+
+
+        menuToggle.addEventListener("click", function () {
+
+            navbar.classList.toggle("active");
+
+        });
+
+
+
+        /* =========================
+           DARK MODE
+        ========================== */
+
+        const themeToggle =
+            document.getElementById("themeToggle");
+
+
+        themeToggle.addEventListener("click", function () {
+
+            document.body.classList.toggle("dark");
+
+
+            if (document.body.classList.contains("dark")) {
+
+                themeToggle.innerHTML = "☀️";
+
+            } else {
+
+                themeToggle.innerHTML = "🌙";
+
+            }
+
+        });
+
+
+
+        /* =========================
+           CONTACT FORM
+        ========================== */
+
+        const contactForm =
+            document.getElementById("contactForm");
+
+        const successMessage =
+            document.getElementById("successMessage");
+
+
+        contactForm.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+
+                successMessage.style.display =
+                    "block";
+
+
+                contactForm.reset();
+
+
+                successMessage.scrollIntoView({
+
+                    behavior: "smooth",
+
+                    block: "center"
+
+                });
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>
+```

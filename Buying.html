@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Pet Haven | Buy a Pet</title>
+
+<style>
+
+    /* =========================
+   GENERAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f4ed;
+    color: #333;
+    transition: 0.3s;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+header {
+    width: 100%;
+    height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    background: white;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+}
+
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #264d43;
+}
+
+
+.logo::before {
+    content: "🐾 ";
+}
+
+
+/* =========================
+   NAVIGATION LINKS
+========================= */
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+
+nav a {
+    text-decoration: none;
+
+    color: #40584f;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    position: relative;
+
+    transition: 0.3s;
+}
+
+
+nav a:hover,
+nav a.active {
+    color: #4c9a7a;
+}
+
+
+nav a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -7px;
+
+    width: 0;
+
+    height: 2px;
+
+    background: #4c9a7a;
+
+    transition: 0.3s;
+}
+
+
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
+}
+
+
+/* =========================
+   DARK MODE BUTTON
+========================= */
+
+.theme-toggle {
+
+    border: none;
+
+    background: #e5f4ed;
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    transition: 0.3s;
+}
+
+
+.theme-toggle:hover {
+    transform: rotate(20deg);
+}
+
+
+/* =========================
+   MOBILE MENU BUTTON
+========================= */
+
+.menu-toggle {
+
+    display: none;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+}
+
+
+.menu-toggle span {
+
+    display: block;
+
+    width: 25px;
+
+    height: 3px;
+
+    background: #264d43;
+
+    margin: 5px;
+
+    border-radius: 3px;
+}
+
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+
+    text-align: center;
+
+    padding: 70px 20px;
+
+    background: linear-gradient(
+        135deg,
+        #e5f4ed,
+        #f7f4ed
+    );
+}
+
+
+.hero h1 {
+
+    font-size: 45px;
+
+    color: #264d43;
+
+    margin-bottom: 15px;
+}
+
+
+.hero p {
+
+    color: #666;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   SEARCH & FILTER
+========================= */
+
+.filter-section {
+
+    background: white;
+
+    width: 85%;
+
+    max-width: 1100px;
+
+    margin: -25px auto 50px;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.08);
+
+    display: flex;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+
+.filter-section input,
+.filter-section select {
+
+    flex: 1;
+
+    min-width: 180px;
+
+    padding: 13px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    font-family: Arial, sans-serif;
+
+    transition: 0.3s;
+}
+
+
+.filter-section input:focus,
+.filter-section select:focus {
+
+    border-color: #4c9a7a;
+
+    box-shadow:
+        0 0 0 3px rgba(76, 154, 122, 0.12);
+}
+
+
+.filter-section button {
+
+    padding: 13px 25px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #4c9a7a;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.filter-section button:hover {
+
+    background: #397e63;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   PET SECTION
+========================= */
+
+.pets-section {
+
+    width: 85%;
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding-bottom: 80px;
+}
+
+
+.pets-section h2 {
+
+    text-align: center;
+
+    color: #264d43;
+
+    font-size: 32px;
+
+    margin-bottom: 40px;
+}
+
+
+/* =========================
+   PET GRID
+========================= */
+
+.pet-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 25px;
+}
+
+
+/* =========================
+   PET CARD
+========================= */
+
+.pet-card {
+
+    background: white;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.08);
+
+    transition: 0.3s;
+}
+
+
+.pet-card:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================
+   PET IMAGE
+========================= */
+
+.pet-card img {
+
+    width: 100%;
+
+    height: 220px;
+
+    object-fit: cover;
+}
+
+
+/* =========================
+   PET INFORMATION
+========================= */
+
+.pet-info {
+
+    padding: 20px;
+}
+
+
+.pet-info h3 {
+
+    color: #264d43;
+
+    font-size: 22px;
+
+    margin-bottom: 8px;
+}
+
+
+.breed {
+
+    color: #4c9a7a;
+
+    font-weight: bold;
+
+    font-size: 14px;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================
+   PET DETAILS
+========================= */
+
+.pet-details {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+
+    font-size: 13px;
+
+    color: #666;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================
+   PRICE
+========================= */
+
+.price {
+
+    color: #264d43;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================
+   VIEW DETAILS BUTTON
+========================= */
+
+.pet-button {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #4c9a7a;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.pet-button:hover {
+
+    background: #397e63;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    background: #1d3831;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 25px;
+}
+
+
+footer p,
+footer {
+
+    font-size: 13px;
+
+    color: #dce9e4;
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+body.dark {
+
+    background: #1e2925;
+
+    color: white;
+}
+
+
+/* NAVBAR */
+
+body.dark header {
+
+    background: #263630;
+}
+
+
+body.dark .logo {
+
+    color: #8fd6b8;
+}
+
+
+body.dark nav a {
+
+    color: white;
+}
+
+
+body.dark nav a.active,
+body.dark nav a:hover {
+
+    color: #8fd6b8;
+}
+
+
+body.dark .menu-toggle span {
+
+    background: white;
+}
+
+
+/* HERO */
+
+body.dark .hero {
+
+    background: linear-gradient(
+        135deg,
+        #263630,
+        #1e2925
+    );
+}
+
+
+body.dark .hero h1 {
+
+    color: #8fd6b8;
+}
+
+
+body.dark .hero p {
+
+    color: #ccc;
+}
+
+
+/* FILTER */
+
+body.dark .filter-section {
+
+    background: #2c3b35;
+}
+
+
+body.dark .filter-section input,
+body.dark .filter-section select {
+
+    background: #374941;
+
+    border-color: #4b6158;
+
+    color: white;
+}
+
+
+/* PET SECTION */
+
+body.dark .pets-section h2 {
+
+    color: #8fd6b8;
+}
+
+
+/* PET CARDS */
+
+body.dark .pet-card {
+
+    background: #2c3b35;
+}
+
+
+body.dark .pet-info h3 {
+
+    color: #8fd6b8;
+}
+
+
+body.dark .pet-details {
+
+    color: #ccc;
+}
+
+
+body.dark .price {
+
+    color: #8fd6b8;
+}
+
+
+/* FOOTER */
+
+body.dark footer {
+
+    background: #15221e;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 850px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+
+    nav {
+
+        display: none;
+
+        position: absolute;
+
+        top: 75px;
+
+        left: 0;
+
+        width: 100%;
+
+        background: white;
+
+        flex-direction: column;
+
+        padding: 25px;
+
+        text-align: center;
+    }
+
+
+    nav.active {
+        display: flex;
+    }
+
+
+    body.dark nav {
+
+        background: #263630;
+    }
+
+
+    .filter-section {
+
+        width: 92%;
+    }
+
+
+    .pets-section {
+
+        width: 92%;
+    }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    header {
+
+        padding: 0 5%;
+    }
+
+
+    .logo {
+
+        font-size: 20px;
+    }
+
+
+    .hero {
+
+        padding: 55px 20px;
+    }
+
+
+    .hero h1 {
+
+        font-size: 32px;
+    }
+
+
+    .hero p {
+
+        font-size: 14px;
+    }
+
+
+    .filter-section {
+
+        flex-direction: column;
+
+        margin-top: -20px;
+    }
+
+
+    .filter-section input,
+    .filter-section select,
+    .filter-section button {
+
+        width: 100%;
+    }
+
+
+    .pets-section h2 {
+
+        font-size: 27px;
+    }
+}
+</style>
+
+
+</head>
+
+<body>
+
+```
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<header>
+
+    <div class="logo">
+        Pet Haven
+    </div>
+
+
+    <button class="menu-toggle"
+            id="menuToggle"
+            aria-label="Toggle navigation">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+
+    <nav id="navbar">
+
+        <a href="homepage.html">
+            Home
+        </a>
+
+        <a href="Buying.html" class="active">
+            Buying
+        </a>
+
+        <a href="selling.html">
+            Selling
+        </a>
+
+        <a href="petinfo.html">
+            Pet Information
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </nav>
+
+
+    <button id="themeToggle"
+            class="theme-toggle"
+            aria-label="Toggle dark mode">
+
+        🌙
+
+    </button>
+
+</header>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <h1>
+        Find Your Perfect Pet 🐾
+    </h1>
+
+    <p>
+        Browse adorable pets looking for their new loving homes.
+    </p>
+
+</section>
+
+
+
+<!-- =========================
+     SEARCH & FILTER
+========================= -->
+
+<section class="filter-section">
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="🔍 Search by pet name or breed">
+
+
+    <select id="petType">
+
+        <option value="">
+            All Pets
+        </option>
+
+        <option value="dog">
+            Dogs
+        </option>
+
+        <option value="cat">
+            Cats
+        </option>
+
+        <option value="rabbit">
+            Rabbits
+        </option>
+
+        <option value="bird">
+            Birds
+        </option>
+
+    </select>
+
+
+    <select id="genderFilter">
+
+        <option value="">
+            Any Gender
+        </option>
+
+        <option value="male">
+            Male
+        </option>
+
+        <option value="female">
+            Female
+        </option>
+
+    </select>
+
+
+    <button onclick="filterPets()">
+        Search
+    </button>
+
+</section>
+
+
+
+<!-- =========================
+     PET LIST
+========================= -->
+
+<section class="pets-section">
+
+    <h2>
+        Available Pets 🐶 🐱 🐰 🦜
+    </h2>
+
+
+    <div class="pet-grid" id="petGrid">
+
+
+        <!-- PET 1 -->
+
+        <div
+            class="pet-card"
+            data-type="dog"
+            data-gender="male"
+            data-name="Max"
+            data-breed="Golden Retriever">
+
+            <img
+                src="dog1.jpg"
+                alt="Golden Retriever">
+
+            <div class="pet-info">
+
+                <h3>
+                    Max 🐶
+                </h3>
+
+                <p class="breed">
+                    Golden Retriever
+                </p>
+
+
+                <div class="pet-details">
+
+                    <span>
+                        🎂 2 Years
+                    </span>
+
+                    <span>
+                        ♂ Male
+                    </span>
+
+                    <span>
+                        📍 Colombo
+                    </span>
+
+                    <span>
+                        🐾 Dog
+                    </span>
+
+                </div>
+
+
+                <p class="price">
+                    Rs. 45,000
+                </p>
+
+
+                <button class="pet-button">
+                    View Details
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PET 2 -->
+
+        <div
+            class="pet-card"
+            data-type="cat"
+            data-gender="female"
+            data-name="Luna"
+            data-breed="Persian">
+
+            <img
+                src="cat1.jpg"
+                alt="Persian Cat">
+
+            <div class="pet-info">
+
+                <h3>
+                    Luna 🐱
+                </h3>
+
+                <p class="breed">
+                    Persian Cat
+                </p>
+
+
+                <div class="pet-details">
+
+                    <span>
+                        🎂 1 Year
+                    </span>
+
+                    <span>
+                        ♀ Female
+                    </span>
+
+                    <span>
+                        📍 Panadura
+                    </span>
+
+                    <span>
+                        🐾 Cat
+                    </span>
+
+                </div>
+
+
+                <p class="price">
+                    Rs. 30,000
+                </p>
+
+
+                <button class="pet-button">
+                    View Details
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PET 3 -->
+
+        <div
+            class="pet-card"
+            data-type="rabbit"
+            data-gender="female"
+            data-name="Snowy"
+            data-breed="Holland Lop">
+
+            <img
+                src="rabit1.jpg"
+                alt="Rabbit">
+
+            <div class="pet-info">
+
+                <h3>
+                    Snowy 🐰
+                </h3>
+
+                <p class="breed">
+                    Holland Lop
+                </p>
+
+
+                <div class="pet-details">
+
+                    <span>
+                        🎂 8 Months
+                    </span>
+
+                    <span>
+                        ♀ Female
+                    </span>
+
+                    <span>
+                        📍 Galle
+                    </span>
+
+                    <span>
+                        🐾 Rabbit
+                    </span>
+
+                </div>
+
+
+                <p class="price">
+                    Rs. 12,000
+                </p>
+
+
+                <button class="pet-button">
+                    View Details
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PET 4 -->
+
+        <div
+            class="pet-card"
+            data-type="bird"
+            data-gender="male"
+            data-name="Rio"
+            data-breed="Lovebird">
+
+            <img
+                src="lovebird1.jpg"
+                alt="Lovebird">
+
+            <div class="pet-info">
+
+                <h3>
+                    Rio 🦜
+                </h3>
+
+                <p class="breed">
+                    Lovebird
+                </p>
+
+
+                <div class="pet-details">
+
+                    <span>
+                        🎂 1 Year
+                    </span>
+
+                    <span>
+                        ♂ Male
+                    </span>
+
+                    <span>
+                        📍 Kalutara
+                    </span>
+
+                    <span>
+                        🐾 Bird
+                    </span>
+
+                </div>
+
+
+                <p class="price">
+                    Rs. 8,500
+                </p>
+
+
+                <button class="pet-button">
+                    View Details
+                </button>
+
+            </div>
+
+        </div>
+        <div
+            class="pet-card"
+            data-type="dog"
+            data-gender="male"
+            data-name="Max"
+            data-breed="Golden Retriever">
+
+            <img
+                src="dog2.jpg"
+                alt="Golden Retriever">
+
+            <div class="pet-info">
+
+                <h3>
+                    Bruno 🐶
+                </h3>
+
+                <p class="breed">
+                    Labrador Retriever
+                </p>
+
+
+                <div class="pet-details">
+
+                    <span>
+                        🎂 1 Year 6 Months
+                    </span>
+
+                    <span>
+                        ♂ Male
+                    </span>
+
+                    <span>
+                        📍 Colombo
+                    </span>
+
+                    <span>
+                        🐾 Dog
+                    </span>
+
+                </div>
+
+
+                <p class="price">
+                    Rs. 38,000
+                </p>
+
+
+                <button class="pet-button">
+                    View Details
+                </button>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 Pet Haven | Find your perfect companion 🐾
+
+</footer>
+
+
+
+<!-- =========================
+     JAVASCRIPT FILTER
+========================= -->
+
+<script>
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+const menuToggle =
+    document.getElementById("menuToggle");
+
+const navbar =
+    document.getElementById("navbar");
+
+
+menuToggle.addEventListener("click", function () {
+
+    navbar.classList.toggle("active");
+
+});
+
+
+/* =========================
+   DARK MODE TOGGLE
+========================= */
+
+const themeToggle =
+    document.getElementById("themeToggle");
+
+
+themeToggle.addEventListener("click", function () {
+
+    // Add/remove dark class from body
+    document.body.classList.toggle("dark");
+
+
+    // Change the icon
+    if (document.body.classList.contains("dark")) {
+
+        themeToggle.innerHTML = "☀️";
+
+    } else {
+
+        themeToggle.innerHTML = "🌙";
+
+    }
+
+});
+
+
+/* =========================
+   PET FILTER
+========================= */
+
+function filterPets() {
+
+    const search =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+
+    const type =
+        document.getElementById("petType")
+        .value;
+
+
+    const gender =
+        document.getElementById("genderFilter")
+        .value;
+
+
+    const pets =
+        document.querySelectorAll(".pet-card");
+
+
+    pets.forEach(function(pet) {
+
+        const name =
+            pet.dataset.name.toLowerCase();
+
+        const breed =
+            pet.dataset.breed.toLowerCase();
+
+        const petType =
+            pet.dataset.type;
+
+        const petGender =
+            pet.dataset.gender;
+
+
+        const matchesSearch =
+            name.includes(search) ||
+            breed.includes(search);
+
+
+        const matchesType =
+            type === "" ||
+            petType === type;
+
+
+        const matchesGender =
+            gender === "" ||
+            petGender === gender;
+
+
+        if (
+            matchesSearch &&
+            matchesType &&
+            matchesGender
+        ) {
+
+            pet.style.display = "block";
+
+        } else {
+
+            pet.style.display = "none";
+
+        }
+
+    });
+
+}
+
+</script>
+<script>
+
+    function filterPets() {
+
+        const search =
+            document.getElementById("searchInput")
+            .value
+            .toLowerCase();
+
+
+        const type =
+            document.getElementById("petType")
+            .value;
+
+
+        const gender =
+            document.getElementById("genderFilter")
+            .value;
+
+
+        const pets =
+            document.querySelectorAll(".pet-card");
+
+
+        pets.forEach(function(pet) {
+
+            const name =
+                pet.dataset.name.toLowerCase();
+
+            const breed =
+                pet.dataset.breed.toLowerCase();
+
+            const petType =
+                pet.dataset.type;
+
+            const petGender =
+                pet.dataset.gender;
+
+
+            const matchesSearch =
+                name.includes(search) ||
+                breed.includes(search);
+
+
+            const matchesType =
+                type === "" ||
+                petType === type;
+
+
+            const matchesGender =
+                gender === "" ||
+                petGender === gender;
+
+
+            if (
+                matchesSearch &&
+                matchesType &&
+                matchesGender
+            ) {
+
+                pet.style.display = "block";
+
+            } else {
+
+                pet.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+</script>
+```
+
+</body>
+
+</html>

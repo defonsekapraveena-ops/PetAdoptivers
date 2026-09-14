@@ -115,7 +115,7 @@
 
         /* =========================
            THEME BUTTON
-        ========================= */
+        ========================== */
 
         .theme-toggle {
 
@@ -142,7 +142,7 @@
 
         /* =========================
            MOBILE MENU
-        ========================= */
+        ========================== */
 
         .menu-toggle {
 
@@ -172,7 +172,7 @@
 
         /* =========================
            PAGE HERO
-        ========================= */
+        ========================== */
 
         .page-hero {
 
@@ -214,7 +214,7 @@
 
         /* =========================
            SELLING SECTION
-        ========================= */
+        ========================== */
 
         .selling-section {
 
@@ -270,7 +270,7 @@
 
         /* =========================
            FORM SECTIONS
-        ========================= */
+        ========================== */
 
         .form-section {
 
@@ -306,7 +306,7 @@
 
         /* =========================
            IMAGE UPLOAD
-        ========================= */
+        ========================== */
 
         .image-upload {
 
@@ -388,7 +388,7 @@
 
         /* =========================
            FORM GRID
-        ========================= */
+        ========================== */
 
         .form-grid {
 
@@ -474,7 +474,7 @@
 
         /* =========================
            SUBMIT BUTTON
-        ========================= */
+        ========================== */
 
         .submit-area {
 
@@ -519,7 +519,7 @@
 
         /* =========================
            SUCCESS MESSAGE
-        ========================= */
+        ========================== */
 
         .success-message {
 
@@ -545,7 +545,7 @@
 
         /* =========================
            FOOTER
-        ========================= */
+        ========================== */
 
         footer {
 
@@ -561,7 +561,7 @@
 
         /* =========================
            DARK MODE
-        ========================= */
+        ========================== */
 
         body.dark {
 
@@ -640,7 +640,7 @@
 
         /* =========================
            RESPONSIVE
-        ========================= */
+        ========================== */
 
         @media (max-width: 800px) {
 
@@ -755,13 +755,13 @@
 
         <nav id="navbar">
 
-            <a href="homepage.html">Home</a>
+            <a href="index.html">Home</a>
+
+            <a href="adopt.html">Adopt</a>
 
             <a href="Buying.html">Buying</a>
 
             <a href="selling.html" class="active">Selling</a>
-
-            <a href="petinfo.html">Pet Information</a>
 
             <a href="contact.html">Contact</a>
 
@@ -1082,9 +1082,39 @@
                     <div class="form-grid">
 
 
-                        <!-- PRICE -->
+                        <!-- LISTING TYPE -->
 
                         <div class="form-group">
+
+                            <label for="listingType">
+                                Listing Type
+                            </label>
+
+                            <select id="listingType"
+                                    required>
+
+                                <option value="">
+                                    Select listing type
+                                </option>
+
+                                <option value="sale">
+                                    💰 For Sale
+                                </option>
+
+                                <option value="adoption">
+                                    🏠 Free to Adopt
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- PRICE -->
+
+                        <div class="form-group"
+                             id="priceGroup">
 
                             <label for="price">
                                 Price (Rs.)
@@ -1093,8 +1123,7 @@
                             <input type="number"
                                    id="price"
                                    min="0"
-                                   placeholder="Enter price"
-                                   required>
+                                   placeholder="Enter price">
 
                         </div>
 
@@ -1102,7 +1131,7 @@
 
                         <!-- LOCATION -->
 
-                        <div class="form-group">
+                        <div class="form-group full-width">
 
                             <label for="location">
                                 Location
@@ -1338,6 +1367,48 @@
 
 
         /* =========================
+           LISTING TYPE
+        ========================== */
+
+        const listingType =
+            document.getElementById("listingType");
+
+        const priceGroup =
+            document.getElementById("priceGroup");
+
+        const price =
+            document.getElementById("price");
+
+
+        listingType.addEventListener("change", function () {
+
+            if (this.value === "sale") {
+
+                // Show price for pets that are for sale
+
+                priceGroup.style.display = "flex";
+
+                price.required = true;
+
+            }
+
+            else if (this.value === "adoption") {
+
+                // Hide price for free adoption
+
+                priceGroup.style.display = "none";
+
+                price.required = false;
+
+                price.value = "";
+
+            }
+
+        });
+
+
+
+        /* =========================
            FORM SUBMISSION
         ========================== */
 
@@ -1368,6 +1439,13 @@
                 "block";
 
 
+            // Show price field again after form reset
+
+            priceGroup.style.display = "flex";
+
+            price.required = false;
+
+
             window.scrollTo({
 
                 top: document.body.scrollHeight,
@@ -1385,4 +1463,3 @@
 </body>
 
 </html>
-```

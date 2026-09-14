@@ -142,56 +142,116 @@
         ========================= */
 
         .hero {
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;   /* Centers the box horizontally */
+    padding: 60px 10%;
+    background:
+        linear-gradient(
+            rgba(38, 77, 67, 0.55),
+            rgba(38, 77, 67, 0.55)
+        ),
+        url("images/homebanner.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
 
-            min-height: 600px;
+.hero-content {
+    max-width: 650px;
+    padding: 40px;
+    text-align: center;        /* Centers text inside the box */
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 25px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+    animation: slideUp 1s ease;
+}
 
-            display: flex;
-            align-items: center;
+.hero-content p {
+    margin-left: auto;
+    margin-right: auto;
+}
 
-            padding: 60px 10%;
+        .hero-badge {
 
-            background:
-                linear-gradient(
-                    rgba(38, 77, 67, 0.55),
-                    rgba(38, 77, 67, 0.55)
-                ),
-                url("images/homebanner.jpg");
+    display: inline-block;
 
-            background-size: cover;
-            background-position: center;
+    padding: 8px 16px;
 
-            color: white;
-        }
+    margin-bottom: 18px;
+
+    background: rgba(229, 244, 237, 0.18);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    border-radius: 30px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+
+    color: #e5f4ed;
+
+}
 
 
         .hero-content {
 
-            max-width: 650px;
+    max-width: 650px;
 
-            animation: slideUp 1s ease;
-        }
+    padding: 40px;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    border-radius: 25px;
+
+    backdrop-filter: blur(8px);
+
+    -webkit-backdrop-filter: blur(8px);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.18);
+
+    animation: slideUp 1s ease;
+
+}
 
 
         .hero-content h1 {
 
-            font-size: 55px;
+    font-size: 55px;
 
-            margin-bottom: 20px;
+    margin-bottom: 20px;
 
-            line-height: 1.1;
-        }
+    line-height: 1.1;
+
+    text-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.25);
+
+}
 
 
         .hero-content p {
 
-            font-size: 18px;
+    font-size: 18px;
 
-            line-height: 1.7;
+    line-height: 1.7;
 
-            margin-bottom: 30px;
+    margin-bottom: 30px;
 
-            max-width: 550px;
-        }
+    max-width: 550px;
+
+    color: #f4fff9;
+
+}
 
 
         /* BUTTONS */
@@ -735,12 +795,12 @@
         <nav id="navbar">
 
             <a href="index.html">Home</a>
+            <a href="adopt.html">Adopt</a>
+
 
             <a href="Buying.html">Buying</a>
 
             <a href="selling.html">Selling</a>
-
-            <a href="petinfo.html">Pet Information</a>
 
             <a href="contact.html">Contact</a>
 
@@ -764,17 +824,21 @@
 
         <div class="hero-content">
 
-            <h1>
-                Find Your Perfect
-                <br>
-                Best Friend 🐾
-            </h1>
+    <div class="hero-badge">
+        🐾 PETS • LOVE • HOME
+    </div>
 
-            <p>
-                Welcome to Adoptivers! Discover loving pets,
-                find your perfect companion, or give a pet
-                the loving home they deserve.
-            </p>
+    <h1>
+        Find Your Perfect
+        <br>
+        Best Friend 🐾
+    </h1>
+
+    <p>
+        Welcome to Adoptivers! Discover loving pets,
+        find your perfect companion, or give a pet
+        the loving home they deserve.
+    </p>
 
 
             <div class="hero-buttons">
@@ -941,7 +1005,7 @@
             Start exploring pets and find the perfect companion today!
         </p>
 
-        <a href="Buying.html" class="btn primary-btn">
+        <a href="adopt.html" class="btn primary-btn">
             Explore Pets 🐾
         </a>
 

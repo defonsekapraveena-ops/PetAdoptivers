@@ -422,6 +422,56 @@
             color: #777;
         }
 
+        /* =========================
+   ATTRACTIVE LOGOUT BUTTON
+========================= */
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    border: none;
+    outline: none;
+
+    background: linear-gradient(135deg, #4c9a7a, #397e63);
+    color: white;
+
+    padding: 10px 18px;
+
+    border-radius: 25px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 15px rgba(76, 154, 122, 0.25);
+
+    transition: all 0.3s ease;
+}
+
+.logout-btn span {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: linear-gradient(135deg, #397e63, #264d43);
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(38, 77, 67, 0.3);
+}
+
+.logout-btn:hover span {
+    transform: translateX(3px);
+}
+
+.logout-btn:active {
+    transform: scale(0.95);
+}
+
 
         /* =========================
            WHY CHOOSE US
@@ -804,6 +854,7 @@
 
             <a href="contact.html">Contact</a>
 
+      
         </nav>
 
 
@@ -812,6 +863,12 @@
         <button id="themeToggle" class="theme-toggle">
             🌙
         </button>
+
+            <button id="logoutBtn" class="logout-btn">
+    <span>↪</span> Logout
+</button>
+
+        
 
     </header>
 
@@ -843,7 +900,7 @@
 
             <div class="hero-buttons">
 
-                <a href="Buying.html" class="btn primary-btn">
+                <a href="adopt.html" class="btn primary-btn">
                     Find a Pet 🐾
                 </a>
 
@@ -1031,50 +1088,55 @@
 
     <script>
 
-        // MOBILE MENU
+    // MOBILE MENU
 
-        const menuToggle =
-            document.getElementById("menuToggle");
+    const menuToggle =
+        document.getElementById("menuToggle");
 
-        const navbar =
-            document.getElementById("navbar");
+    const navbar =
+        document.getElementById("navbar");
 
+    menuToggle.addEventListener("click", function () {
 
-        menuToggle.addEventListener("click", function () {
+        navbar.classList.toggle("active");
 
-            navbar.classList.toggle("active");
-
-        });
-
-
-        // DARK MODE
-
-        const themeToggle =
-            document.getElementById("themeToggle");
+    });
 
 
-        themeToggle.addEventListener("click", function () {
+    // DARK MODE
 
-            document.body.classList.toggle("dark");
+    const themeToggle =
+        document.getElementById("themeToggle");
+
+    themeToggle.addEventListener("click", function () {
+
+        document.body.classList.toggle("dark");
+
+        if (document.body.classList.contains("dark")) {
+
+            themeToggle.innerHTML = "☀️";
+
+        } else {
+
+            themeToggle.innerHTML = "🌙";
+
+        }
+
+    });
 
 
-            // Change icon
+    // LOGOUT
 
-            if (document.body.classList.contains("dark")) {
+    const logoutBtn =
+        document.getElementById("logoutBtn");
 
-                themeToggle.innerHTML = "☀️";
+    logoutBtn.addEventListener("click", function () {
 
-            }
+        window.location.href = "login.html";
 
-            else {
+    });
 
-                themeToggle.innerHTML = "🌙";
-
-            }
-
-        });
-
-    </script>
+</script>
 
 </body>
 </html>

@@ -1,1444 +1,2592 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<title>Pet Haven | Buy a Pet</title>
+    <title>Adoptivers | Buy a Pet</title>
 
-<style>
+    <style>
 
-    /* =========================
-   GENERAL
-========================= */
+        /* =========================
+           GENERAL
+        ========================= */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-html {
-    scroll-behavior: smooth;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f7f4ed;
-    color: #333;
-    transition: 0.3s;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f4ed;
+            color: #333;
+            transition: 0.3s;
+        }
 
 
-/* =========================
-   NAVBAR
-========================= */
+        /* =========================
+           NAVBAR
+        ========================= */
 
-header {
-    width: 100%;
-    height: 75px;
+        header {
+            width: 100%;
+            height: 75px;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-    padding: 0 7%;
+            padding: 0 7%;
 
-    background: white;
+            background: white;
 
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
 
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
-}
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+        }
 
 
-.logo {
-    font-size: 25px;
-    font-weight: bold;
-    color: #264d43;
-}
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #264d43;
+        }
 
 
-.logo::before {
-    content: "🐾 ";
-}
+        .logo::before {
+            content: "🐾 ";
+        }
 
 
-/* =========================
-   NAVIGATION LINKS
-========================= */
+        /* =========================
+           NAVIGATION
+        ========================= */
 
-nav {
-    display: flex;
-    gap: 25px;
-}
+        nav {
+            display: flex;
+            gap: 25px;
+        }
 
 
-nav a {
-    text-decoration: none;
+        nav a {
+            text-decoration: none;
 
-    color: #40584f;
+            color: #40584f;
 
-    font-size: 15px;
+            font-size: 15px;
 
-    font-weight: 600;
+            font-weight: 600;
 
-    position: relative;
+            position: relative;
 
-    transition: 0.3s;
-}
+            transition: 0.3s;
+        }
 
 
-nav a:hover,
-nav a.active {
-    color: #4c9a7a;
-}
+        nav a:hover,
+        nav a.active {
+            color: #4c9a7a;
+        }
 
 
-nav a::after {
+        nav a::after {
 
-    content: "";
+            content: "";
 
-    position: absolute;
+            position: absolute;
 
-    left: 0;
+            left: 0;
 
-    bottom: -7px;
+            bottom: -7px;
 
-    width: 0;
+            width: 0;
 
-    height: 2px;
+            height: 2px;
 
-    background: #4c9a7a;
+            background: #4c9a7a;
 
-    transition: 0.3s;
-}
+            transition: 0.3s;
+        }
 
 
-nav a:hover::after,
-nav a.active::after {
-    width: 100%;
-}
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
 
 
-/* =========================
-   DARK MODE BUTTON
-========================= */
+        /* =========================
+           DARK MODE BUTTON
+        ========================= */
 
-.theme-toggle {
+        .theme-toggle {
 
-    border: none;
+            border: none;
 
-    background: #e5f4ed;
+            background: #e5f4ed;
 
-    width: 42px;
+            width: 42px;
 
-    height: 42px;
+            height: 42px;
 
-    border-radius: 50%;
+            border-radius: 50%;
 
-    cursor: pointer;
+            cursor: pointer;
 
-    font-size: 18px;
+            font-size: 18px;
 
-    transition: 0.3s;
-}
+            transition: 0.3s;
+        }
 
 
-.theme-toggle:hover {
-    transform: rotate(20deg);
-}
+        .theme-toggle:hover {
+            transform: rotate(20deg);
+        }
 
 
-/* =========================
-   MOBILE MENU BUTTON
-========================= */
+        /* =========================
+           MOBILE MENU
+        ========================= */
 
-.menu-toggle {
+        .menu-toggle {
 
-    display: none;
+            display: none;
 
-    border: none;
+            border: none;
 
-    background: transparent;
+            background: transparent;
 
-    cursor: pointer;
-}
+            cursor: pointer;
+        }
 
 
-.menu-toggle span {
+        .menu-toggle span {
 
-    display: block;
+            display: block;
 
-    width: 25px;
+            width: 25px;
 
-    height: 3px;
+            height: 3px;
 
-    background: #264d43;
+            background: #264d43;
 
-    margin: 5px;
+            margin: 5px;
 
-    border-radius: 3px;
-}
+            border-radius: 3px;
+        }
 
 
-/* =========================
-   HERO SECTION
-========================= */
+        /* =========================
+           HERO
+        ========================= */
 
-.hero {
+        .buy-hero {
 
-    text-align: center;
+            background:
+                linear-gradient(
+                    rgba(38, 77, 67, 0.92),
+                    rgba(38, 77, 67, 0.88)
+                );
 
-    padding: 70px 20px;
+            color: white;
 
-    background: linear-gradient(
-        135deg,
-        #e5f4ed,
-        #f7f4ed
-    );
-}
+            text-align: center;
 
+            padding: 70px 20px 60px;
+        }
 
-.hero h1 {
 
-    font-size: 45px;
+        .buy-hero h1 {
 
-    color: #264d43;
+            font-size: 42px;
 
-    margin-bottom: 15px;
-}
+            margin-bottom: 15px;
+        }
 
 
-.hero p {
+        .buy-hero p {
 
-    color: #666;
+            max-width: 700px;
 
-    font-size: 16px;
-}
+            margin: auto;
 
+            line-height: 1.7;
 
-/* =========================
-   SEARCH & FILTER
-========================= */
+            color: #e5f4ed;
 
-.filter-section {
+            font-size: 16px;
+        }
 
-    background: white;
 
-    width: 85%;
+        /* =========================
+           CATEGORY BUTTONS
+        ========================= */
 
-    max-width: 1100px;
+        .category-buttons {
 
-    margin: -25px auto 50px;
+            margin-top: 25px;
 
-    padding: 25px;
+            display: flex;
 
-    border-radius: 15px;
+            justify-content: center;
 
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.08);
+            flex-wrap: wrap;
 
-    display: flex;
+            gap: 10px;
+        }
 
-    gap: 15px;
 
-    flex-wrap: wrap;
-}
+        .category-buttons a {
 
+            background: white;
 
-.filter-section input,
-.filter-section select {
+            color: #264d43;
 
-    flex: 1;
+            padding: 10px 18px;
 
-    min-width: 180px;
+            border-radius: 25px;
 
-    padding: 13px;
+            font-size: 14px;
 
-    border: 1px solid #ddd;
+            font-weight: bold;
 
-    border-radius: 8px;
+            transition: 0.3s;
+        }
 
-    outline: none;
 
-    font-family: Arial, sans-serif;
+        .category-buttons a:hover {
 
-    transition: 0.3s;
-}
+            background: #4c9a7a;
 
+            color: white;
 
-.filter-section input:focus,
-.filter-section select:focus {
+            transform: translateY(-2px);
+        }
 
-    border-color: #4c9a7a;
 
-    box-shadow:
-        0 0 0 3px rgba(76, 154, 122, 0.12);
-}
+        /* =========================
+           SEARCH SECTION
+        ========================= */
 
+        .search-section {
 
-.filter-section button {
+            padding: 35px 7% 15px;
+        }
 
-    padding: 13px 25px;
 
-    border: none;
+        .search-box {
 
-    border-radius: 8px;
+            max-width: 900px;
 
-    background: #4c9a7a;
+            margin: auto;
 
-    color: white;
+            display: flex;
 
-    font-weight: bold;
+            gap: 12px;
 
-    cursor: pointer;
+            flex-wrap: wrap;
+        }
 
-    transition: 0.3s;
-}
 
+        .search-box input,
+        .search-box select {
 
-.filter-section button:hover {
+            flex: 1;
 
-    background: #397e63;
+            min-width: 200px;
 
-    transform: translateY(-2px);
-}
+            padding: 14px 16px;
 
+            border: 1.5px solid #ddd;
 
-/* =========================
-   PET SECTION
-========================= */
+            border-radius: 10px;
 
-.pets-section {
+            outline: none;
 
-    width: 85%;
+            font-family: Arial, sans-serif;
 
-    max-width: 1200px;
+            font-size: 14px;
 
-    margin: auto;
+            background: white;
 
-    padding-bottom: 80px;
-}
+            color: #555;
 
+            transition: 0.3s;
+        }
 
-.pets-section h2 {
 
-    text-align: center;
+        .search-box input:focus,
+        .search-box select:focus {
 
-    color: #264d43;
+            border-color: #4c9a7a;
 
-    font-size: 32px;
+            box-shadow:
+                0 0 0 3px rgba(76, 154, 122, 0.12);
+        }
 
-    margin-bottom: 40px;
-}
 
+        /* =========================
+           MAIN
+        ========================= */
 
-/* =========================
-   PET GRID
-========================= */
+        main {
 
-.pet-grid {
+            padding: 20px 7% 70px;
+        }
 
-    display: grid;
 
-    grid-template-columns:
-        repeat(auto-fit, minmax(250px, 1fr));
+        /* =========================
+           PET SECTION
+        ========================= */
 
-    gap: 25px;
-}
+        .pet-section {
 
+            margin-top: 45px;
 
-/* =========================
-   PET CARD
-========================= */
+            scroll-margin-top: 100px;
+        }
 
-.pet-card {
 
-    background: white;
+        .section-title {
 
-    border-radius: 15px;
+            text-align: center;
 
-    overflow: hidden;
+            margin-bottom: 25px;
+        }
 
-    box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.08);
 
-    transition: 0.3s;
-}
+        .section-title h2 {
 
+            color: #264d43;
 
-.pet-card:hover {
+            font-size: 30px;
 
-    transform: translateY(-8px);
+            margin-bottom: 8px;
+        }
 
-    box-shadow:
-        0 15px 30px rgba(0, 0, 0, 0.12);
-}
 
+        .section-title p {
 
-/* =========================
-   PET IMAGE
-========================= */
+            color: #666;
 
-.pet-card img {
+            font-size: 14px;
+        }
 
-    width: 100%;
 
-    height: 220px;
+        /* =========================
+           PET GRID
+        ========================= */
 
-    object-fit: cover;
-}
+        .pet-grid {
 
+            display: grid;
 
-/* =========================
-   PET INFORMATION
-========================= */
+            grid-template-columns:
+                repeat(3, 1fr);
 
-.pet-info {
+            gap: 25px;
 
-    padding: 20px;
-}
+            align-items: stretch;
+        }
 
 
-.pet-info h3 {
+        /* =========================
+           PET CARD
+        ========================= */
 
-    color: #264d43;
+        .pet-card {
 
-    font-size: 22px;
+            background: white;
 
-    margin-bottom: 8px;
-}
+            border-radius: 18px;
 
+            overflow: hidden;
 
-.breed {
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.08);
 
-    color: #4c9a7a;
+            transition: 0.3s;
 
-    font-weight: bold;
+            display: flex;
 
-    font-size: 14px;
+            flex-direction: column;
 
-    margin-bottom: 15px;
-}
+            min-height: 520px;
+        }
 
 
-/* =========================
-   PET DETAILS
-========================= */
+        .pet-card:hover {
 
-.pet-details {
+            transform: translateY(-6px);
 
-    display: grid;
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.12);
+        }
 
-    grid-template-columns: 1fr 1fr;
 
-    gap: 10px;
+        /* =========================
+           PET IMAGE
+        ========================= */
 
-    font-size: 13px;
+        .pet-image {
 
-    color: #666;
+            width: 100%;
 
-    margin-bottom: 18px;
-}
+            height: 230px;
 
+            object-fit: cover;
 
-/* =========================
-   PRICE
-========================= */
+            display: block;
+        }
 
-.price {
 
-    color: #264d43;
+        /* =========================
+           PET CONTENT
+        ========================= */
 
-    font-size: 20px;
+        .pet-content {
 
-    font-weight: bold;
+            padding: 20px;
 
-    margin-bottom: 15px;
-}
+            display: flex;
 
+            flex-direction: column;
 
-/* =========================
-   VIEW DETAILS BUTTON
-========================= */
+            flex: 1;
+        }
 
-.pet-button {
 
-    width: 100%;
+        /* =========================
+           PET NAME
+        ========================= */
 
-    padding: 12px;
+        .pet-name {
 
-    border: none;
+            color: #264d43;
 
-    border-radius: 8px;
+            font-size: 23px;
 
-    background: #4c9a7a;
+            margin-bottom: 6px;
+        }
 
-    color: white;
 
-    font-weight: bold;
+        /* =========================
+           PET TYPE
+        ========================= */
 
-    cursor: pointer;
+        .breed {
 
-    transition: 0.3s;
-}
+            color: #c98a3b;
 
+            font-weight: bold;
 
-.pet-button:hover {
+            font-size: 14px;
 
-    background: #397e63;
+            margin-bottom: 15px;
+        }
 
-    transform: translateY(-2px);
-}
 
+        /* =========================
+           PET INFORMATION
+        ========================= */
 
-/* =========================
-   FOOTER
-========================= */
+        .pet-info {
 
-footer {
+            display: grid;
 
-    background: #1d3831;
+            grid-template-columns: 1fr 1fr;
 
-    color: white;
+            gap: 8px;
 
-    text-align: center;
+            margin-bottom: 12px;
+        }
 
-    padding: 25px;
-}
 
+        .pet-info p {
 
-footer p,
-footer {
+            color: #666;
 
-    font-size: 13px;
+            font-size: 13px;
+        }
 
-    color: #dce9e4;
-}
 
+        .pet-info strong {
 
-/* =========================
-   DARK MODE
-========================= */
+            color: #40584f;
+        }
 
-body.dark {
 
-    background: #1e2925;
+        /* =========================
+           DESCRIPTION
+        ========================= */
 
-    color: white;
-}
+        .description {
 
+            color: #777;
 
-/* NAVBAR */
+            font-size: 14px;
 
-body.dark header {
+            line-height: 1.5;
 
-    background: #263630;
-}
+            margin-bottom: 12px;
 
+            min-height: 63px;
+        }
 
-body.dark .logo {
 
-    color: #8fd6b8;
-}
+        /* =========================
+           PRICE
+        ========================= */
 
+        .price {
 
-body.dark nav a {
+            color: #264d43;
 
-    color: white;
-}
+            font-size: 20px;
 
+            font-weight: bold;
 
-body.dark nav a.active,
-body.dark nav a:hover {
+            margin-bottom: 12px;
+        }
 
-    color: #8fd6b8;
-}
 
+        .price span {
 
-body.dark .menu-toggle span {
+            color: #777;
 
-    background: white;
-}
+            font-size: 12px;
 
+            font-weight: normal;
+        }
 
-/* HERO */
 
-body.dark .hero {
+        /* =========================
+           STATUS
+        ========================= */
 
-    background: linear-gradient(
-        135deg,
-        #263630,
-        #1e2925
-    );
-}
+        .status {
 
+            display: inline-block;
 
-body.dark .hero h1 {
+            width: fit-content;
 
-    color: #8fd6b8;
-}
+            padding: 6px 12px;
 
+            border-radius: 20px;
 
-body.dark .hero p {
+            font-size: 12px;
 
-    color: #ccc;
-}
+            font-weight: bold;
 
+            margin-bottom: 12px;
+        }
 
-/* FILTER */
 
-body.dark .filter-section {
+        .available {
 
-    background: #2c3b35;
-}
+            background: #e5f4ed;
 
+            color: #28734d;
+        }
 
-body.dark .filter-section input,
-body.dark .filter-section select {
 
-    background: #374941;
+        .pending {
 
-    border-color: #4b6158;
+            background: #fff0c7;
 
-    color: white;
-}
+            color: #8a6500;
+        }
 
 
-/* PET SECTION */
+        /* =========================
+           CARD BUTTONS
+        ========================= */
 
-body.dark .pets-section h2 {
+        .card-buttons {
 
-    color: #8fd6b8;
-}
+            display: flex;
 
+            gap: 10px;
 
-/* PET CARDS */
+            margin-top: auto;
+        }
 
-body.dark .pet-card {
 
-    background: #2c3b35;
-}
+        .btn {
 
+            flex: 1;
 
-body.dark .pet-info h3 {
+            border: none;
 
-    color: #8fd6b8;
-}
+            padding: 11px;
 
+            border-radius: 9px;
 
-body.dark .pet-details {
+            cursor: pointer;
 
-    color: #ccc;
-}
+            font-weight: bold;
 
+            font-family: Arial, sans-serif;
 
-body.dark .price {
+            transition: 0.3s;
+        }
 
-    color: #8fd6b8;
-}
 
+        /* VIEW DETAILS */
 
-/* FOOTER */
+        .details-btn {
 
-body.dark footer {
+            background: #264d43;
 
-    background: #15221e;
-}
+            color: white;
+        }
 
 
-/* =========================
-   RESPONSIVE
-========================= */
+        .details-btn:hover {
 
-@media (max-width: 850px) {
+            background: #397e63;
 
-    .menu-toggle {
-        display: block;
-    }
+            transform: translateY(-2px);
+        }
 
 
-    nav {
+        /* CONTACT SELLER */
 
-        display: none;
+        .contact-btn {
 
-        position: absolute;
+            background: transparent;
 
-        top: 75px;
+            border: 1px solid #4c9a7a;
 
-        left: 0;
+            color: #4c9a7a;
+        }
 
-        width: 100%;
 
-        background: white;
+        .contact-btn:hover {
 
-        flex-direction: column;
+            background: #4c9a7a;
 
-        padding: 25px;
+            color: white;
+        }
 
-        text-align: center;
-    }
 
+        /* DISABLED */
 
-    nav.active {
-        display: flex;
-    }
+        .disabled-btn {
 
+            background: #999;
 
-    body.dark nav {
+            color: white;
 
-        background: #263630;
-    }
+            cursor: not-allowed;
+        }
 
 
-    .filter-section {
+        /* =========================
+           NO RESULTS
+        ========================= */
 
-        width: 92%;
-    }
+        .no-results {
 
+            display: none;
 
-    .pets-section {
+            text-align: center;
 
-        width: 92%;
-    }
-}
+            padding: 40px;
 
+            color: #777;
 
-/* =========================
-   SMALL MOBILE
-========================= */
+            font-size: 15px;
+        }
 
-@media (max-width: 600px) {
 
-    header {
+        /* =========================
+           BUYING CTA
+        ========================= */
 
-        padding: 0 5%;
-    }
+        .cta {
 
+            margin-top: 60px;
 
-    .logo {
+            background: #264d43;
 
-        font-size: 20px;
-    }
+            color: white;
 
+            padding: 50px 20px;
 
-    .hero {
+            border-radius: 20px;
 
-        padding: 55px 20px;
-    }
+            text-align: center;
+        }
 
 
-    .hero h1 {
+        .cta h2 {
 
-        font-size: 32px;
-    }
+            font-size: 30px;
 
+            margin-bottom: 10px;
+        }
 
-    .hero p {
 
-        font-size: 14px;
-    }
+        .cta p {
 
+            color: #dce9e4;
 
-    .filter-section {
+            margin-bottom: 25px;
 
-        flex-direction: column;
+            line-height: 1.6;
+        }
 
-        margin-top: -20px;
-    }
 
+        .cta a {
 
-    .filter-section input,
-    .filter-section select,
-    .filter-section button {
+            display: inline-block;
 
-        width: 100%;
-    }
+            background: #4c9a7a;
 
+            color: white;
 
-    .pets-section h2 {
+            padding: 12px 25px;
 
-        font-size: 27px;
-    }
-}
-</style>
+            border-radius: 25px;
 
+            font-weight: bold;
 
-</head>
+            transition: 0.3s;
+        }
 
-<body>
 
-```
-<!-- =========================
-     NAVIGATION
-========================= -->
+        .cta a:hover {
 
-<header>
+            background: #397e63;
 
-    <div class="logo">
-        Pet Haven
-    </div>
+            transform: translateY(-2px);
+        }
 
 
-    <button class="menu-toggle"
-            id="menuToggle"
-            aria-label="Toggle navigation">
+        /* =========================
+           PET DETAILS MODAL
+        ========================= */
 
-        <span></span>
-        <span></span>
-        <span></span>
+        .modal {
 
-    </button>
+            display: none;
 
+            position: fixed;
 
-    <nav id="navbar">
+            z-index: 2000;
 
-        <a href="homepage.html">
-            Home
-        </a>
+            left: 0;
 
-        <a href="Buying.html" class="active">
-            Buying
-        </a>
+            top: 0;
 
-        <a href="selling.html">
-            Selling
-        </a>
+            width: 100%;
 
-        <a href="petinfo.html">
-            Pet Information
-        </a>
+            height: 100%;
 
-        <a href="contact.html">
-            Contact
-        </a>
+            background:
+                rgba(0, 0, 0, 0.65);
 
-    </nav>
+            justify-content: center;
 
+            align-items: center;
 
-    <button id="themeToggle"
-            class="theme-toggle"
-            aria-label="Toggle dark mode">
+            padding: 20px;
+        }
 
-        🌙
 
-    </button>
+        .modal-content {
 
-</header>
+            width: 100%;
 
+            max-width: 500px;
 
+            background: white;
 
-<!-- =========================
-     HERO
-========================= -->
+            border-radius: 20px;
 
-<section class="hero">
+            padding: 30px;
 
-    <h1>
-        Find Your Perfect Pet 🐾
-    </h1>
+            position: relative;
 
-    <p>
-        Browse adorable pets looking for their new loving homes.
-    </p>
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.2);
 
-</section>
+            max-height: 90vh;
 
+            overflow-y: auto;
+        }
 
 
-<!-- =========================
-     SEARCH & FILTER
-========================= -->
+        .modal-image {
 
-<section class="filter-section">
+            width: 100%;
 
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="🔍 Search by pet name or breed">
+            height: 230px;
 
+            object-fit: cover;
 
-    <select id="petType">
+            border-radius: 12px;
 
-        <option value="">
-            All Pets
-        </option>
+            margin-bottom: 20px;
+        }
 
-        <option value="dog">
-            Dogs
-        </option>
 
-        <option value="cat">
-            Cats
-        </option>
+        .modal-content h2 {
 
-        <option value="rabbit">
-            Rabbits
-        </option>
+            color: #264d43;
 
-        <option value="bird">
-            Birds
-        </option>
+            margin-bottom: 8px;
 
-    </select>
+            font-size: 28px;
+        }
 
 
-    <select id="genderFilter">
+        .modal-content .modal-breed {
 
-        <option value="">
-            Any Gender
-        </option>
+            color: #c98a3b;
 
-        <option value="male">
-            Male
-        </option>
+            font-weight: bold;
 
-        <option value="female">
-            Female
-        </option>
+            margin-bottom: 15px;
+        }
 
-    </select>
 
+        .modal-content p {
 
-    <button onclick="filterPets()">
-        Search
-    </button>
+            color: #666;
 
-</section>
+            line-height: 1.6;
 
+            margin-bottom: 10px;
+        }
 
 
-<!-- =========================
-     PET LIST
-========================= -->
+        .close {
 
-<section class="pets-section">
+            position: absolute;
 
-    <h2>
-        Available Pets 🐶 🐱 🐰 🦜
-    </h2>
+            right: 20px;
 
+            top: 12px;
 
-    <div class="pet-grid" id="petGrid">
+            font-size: 30px;
 
+            cursor: pointer;
 
-        <!-- PET 1 -->
+            color: #777;
 
-        <div
-            class="pet-card"
-            data-type="dog"
-            data-gender="male"
-            data-name="Max"
-            data-breed="Golden Retriever">
+            z-index: 2;
+        }
 
-            <img
-                src="dog1.jpg"
-                alt="Golden Retriever">
 
-            <div class="pet-info">
+        .close:hover {
 
-                <h3>
-                    Max 🐶
-                </h3>
+            color: #264d43;
+        }
 
-                <p class="breed">
-                    Golden Retriever
-                </p>
 
+        .modal-contact-btn {
 
-                <div class="pet-details">
+            width: 100%;
 
-                    <span>
-                        🎂 2 Years
-                    </span>
+            border: none;
 
-                    <span>
-                        ♂ Male
-                    </span>
+            padding: 13px;
 
-                    <span>
-                        📍 Colombo
-                    </span>
+            border-radius: 10px;
 
-                    <span>
-                        🐾 Dog
-                    </span>
+            background: #4c9a7a;
 
-                </div>
+            color: white;
 
+            font-weight: bold;
 
-                <p class="price">
-                    Rs. 45,000
-                </p>
+            cursor: pointer;
 
+            margin-top: 15px;
 
-                <button class="pet-button">
-                    View Details
-                </button>
+            font-size: 14px;
+        }
 
-            </div>
 
-        </div>
+        .modal-contact-btn:hover {
 
+            background: #397e63;
+        }
 
 
-        <!-- PET 2 -->
+        /* =========================
+           FOOTER
+        ========================= */
 
-        <div
-            class="pet-card"
-            data-type="cat"
-            data-gender="female"
-            data-name="Luna"
-            data-breed="Persian">
+        footer {
 
-            <img
-                src="cat1.jpg"
-                alt="Persian Cat">
+            background: #1d3831;
 
-            <div class="pet-info">
+            color: white;
 
-                <h3>
-                    Luna 🐱
-                </h3>
+            text-align: center;
 
-                <p class="breed">
-                    Persian Cat
-                </p>
+            padding: 25px;
+        }
 
 
-                <div class="pet-details">
+        footer p {
 
-                    <span>
-                        🎂 1 Year
-                    </span>
+            font-size: 13px;
 
-                    <span>
-                        ♀ Female
-                    </span>
+            color: #dce9e4;
+        }
 
-                    <span>
-                        📍 Panadura
-                    </span>
 
-                    <span>
-                        🐾 Cat
-                    </span>
+        /* =========================
+           DARK MODE
+        ========================= */
 
-                </div>
+        body.dark {
 
+            background: #1e2925;
 
-                <p class="price">
-                    Rs. 30,000
-                </p>
+            color: white;
+        }
 
 
-                <button class="pet-button">
-                    View Details
-                </button>
+        body.dark header {
 
-            </div>
+            background: #263630;
+        }
 
-        </div>
 
+        body.dark .logo {
 
+            color: #8fd6b8;
+        }
 
-        <!-- PET 3 -->
 
-        <div
-            class="pet-card"
-            data-type="rabbit"
-            data-gender="female"
-            data-name="Snowy"
-            data-breed="Holland Lop">
+        body.dark nav a {
 
-            <img
-                src="rabit1.jpg"
-                alt="Rabbit">
+            color: white;
+        }
 
-            <div class="pet-info">
 
-                <h3>
-                    Snowy 🐰
-                </h3>
+        body.dark nav a:hover,
+        body.dark nav a.active {
 
-                <p class="breed">
-                    Holland Lop
-                </p>
+            color: #8fd6b8;
+        }
 
 
-                <div class="pet-details">
+        body.dark nav a::after {
 
-                    <span>
-                        🎂 8 Months
-                    </span>
+            background: #8fd6b8;
+        }
 
-                    <span>
-                        ♀ Female
-                    </span>
 
-                    <span>
-                        📍 Galle
-                    </span>
+        body.dark .theme-toggle {
 
-                    <span>
-                        🐾 Rabbit
-                    </span>
+            background: #374941;
 
-                </div>
+            color: #8fd6b8;
+        }
 
 
-                <p class="price">
-                    Rs. 12,000
-                </p>
+        body.dark .menu-toggle span {
 
+            background: #8fd6b8;
+        }
 
-                <button class="pet-button">
-                    View Details
-                </button>
 
-            </div>
+        body.dark .section-title h2 {
 
-        </div>
+            color: #8fd6b8;
+        }
 
 
+        body.dark .section-title p {
 
-        <!-- PET 4 -->
+            color: #ccc;
+        }
 
-        <div
-            class="pet-card"
-            data-type="bird"
-            data-gender="male"
-            data-name="Rio"
-            data-breed="Lovebird">
 
-            <img
-                src="lovebird1.jpg"
-                alt="Lovebird">
+        body.dark .pet-card {
 
-            <div class="pet-info">
+            background: #2c3b35;
 
-                <h3>
-                    Rio 🦜
-                </h3>
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.25);
+        }
 
-                <p class="breed">
-                    Lovebird
-                </p>
 
+        body.dark .pet-name {
 
-                <div class="pet-details">
+            color: #8fd6b8;
+        }
 
-                    <span>
-                        🎂 1 Year
-                    </span>
 
-                    <span>
-                        ♂ Male
-                    </span>
+        body.dark .pet-info p {
 
-                    <span>
-                        📍 Kalutara
-                    </span>
+            color: #ccc;
+        }
 
-                    <span>
-                        🐾 Bird
-                    </span>
 
-                </div>
+        body.dark .pet-info strong {
 
+            color: #d6e6df;
+        }
 
-                <p class="price">
-                    Rs. 8,500
-                </p>
 
+        body.dark .description {
 
-                <button class="pet-button">
-                    View Details
-                </button>
+            color: #ccc;
+        }
 
-            </div>
 
-        </div>
-        <div
-            class="pet-card"
-            data-type="dog"
-            data-gender="male"
-            data-name="Max"
-            data-breed="Golden Retriever">
+        body.dark .price {
 
-            <img
-                src="dog2.jpg"
-                alt="Golden Retriever">
+            color: #8fd6b8;
+        }
 
-            <div class="pet-info">
 
-                <h3>
-                    Bruno 🐶
-                </h3>
+        body.dark .price span {
 
-                <p class="breed">
-                    Labrador Retriever
-                </p>
+            color: #aaa;
+        }
 
 
-                <div class="pet-details">
+        body.dark .search-box input,
+        body.dark .search-box select {
 
-                    <span>
-                        🎂 1 Year 6 Months
-                    </span>
+            background: #374941;
 
-                    <span>
-                        ♂ Male
-                    </span>
+            border-color: #4b6158;
 
-                    <span>
-                        📍 Colombo
-                    </span>
+            color: white;
+        }
 
-                    <span>
-                        🐾 Dog
-                    </span>
 
-                </div>
+        body.dark .search-box input::placeholder {
 
+            color: #b8c5be;
+        }
 
-                <p class="price">
-                    Rs. 38,000
-                </p>
 
+        body.dark .no-results {
 
-                <button class="pet-button">
-                    View Details
-                </button>
+            color: #ccc;
+        }
 
-            </div>
 
-        </div>
+        body.dark .cta {
 
+            background: #10231b;
+        }
 
-    </div>
 
-</section>
+        body.dark .modal-content {
 
+            background: #2c3b35;
+        }
 
 
-<!-- FOOTER -->
+        body.dark .modal-content h2 {
 
-<footer>
+            color: #8fd6b8;
+        }
 
-    © 2026 Pet Haven | Find your perfect companion 🐾
 
-</footer>
+        body.dark .modal-content p {
 
+            color: #ccc;
+        }
 
 
-<!-- =========================
-     JAVASCRIPT FILTER
-========================= -->
+        body.dark .modal-content .modal-breed {
 
-<script>
+            color: #e5b45e;
+        }
 
-/* =========================
-   MOBILE MENU
-========================= */
 
-const menuToggle =
-    document.getElementById("menuToggle");
+        body.dark .close {
 
-const navbar =
-    document.getElementById("navbar");
+            color: #ccc;
+        }
 
 
-menuToggle.addEventListener("click", function () {
+        /* =========================
+           RESPONSIVE
+        ========================= */
 
-    navbar.classList.toggle("active");
+        @media (max-width: 900px) {
 
-});
+            .pet-grid {
 
-
-/* =========================
-   DARK MODE TOGGLE
-========================= */
-
-const themeToggle =
-    document.getElementById("themeToggle");
-
-
-themeToggle.addEventListener("click", function () {
-
-    // Add/remove dark class from body
-    document.body.classList.toggle("dark");
-
-
-    // Change the icon
-    if (document.body.classList.contains("dark")) {
-
-        themeToggle.innerHTML = "☀️";
-
-    } else {
-
-        themeToggle.innerHTML = "🌙";
-
-    }
-
-});
-
-
-/* =========================
-   PET FILTER
-========================= */
-
-function filterPets() {
-
-    const search =
-        document.getElementById("searchInput")
-        .value
-        .toLowerCase();
-
-
-    const type =
-        document.getElementById("petType")
-        .value;
-
-
-    const gender =
-        document.getElementById("genderFilter")
-        .value;
-
-
-    const pets =
-        document.querySelectorAll(".pet-card");
-
-
-    pets.forEach(function(pet) {
-
-        const name =
-            pet.dataset.name.toLowerCase();
-
-        const breed =
-            pet.dataset.breed.toLowerCase();
-
-        const petType =
-            pet.dataset.type;
-
-        const petGender =
-            pet.dataset.gender;
-
-
-        const matchesSearch =
-            name.includes(search) ||
-            breed.includes(search);
-
-
-        const matchesType =
-            type === "" ||
-            petType === type;
-
-
-        const matchesGender =
-            gender === "" ||
-            petGender === gender;
-
-
-        if (
-            matchesSearch &&
-            matchesType &&
-            matchesGender
-        ) {
-
-            pet.style.display = "block";
-
-        } else {
-
-            pet.style.display = "none";
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
 
         }
 
-    });
 
-}
+        /* =========================
+           MOBILE NAVIGATION
+        ========================= */
 
-</script>
-<script>
+        @media (max-width: 850px) {
 
-    function filterPets() {
+            .menu-toggle {
 
-        const search =
-            document.getElementById("searchInput")
-            .value
-            .toLowerCase();
+                display: block;
+            }
 
 
-        const type =
-            document.getElementById("petType")
-            .value;
+            nav {
+
+                display: none;
+
+                position: absolute;
+
+                top: 75px;
+
+                left: 0;
+
+                width: 100%;
+
+                background: white;
+
+                flex-direction: column;
+
+                padding: 25px;
+
+                text-align: center;
+
+                gap: 18px;
+            }
 
 
-        const gender =
-            document.getElementById("genderFilter")
-            .value;
+            nav.active {
+
+                display: flex;
+            }
 
 
-        const pets =
-            document.querySelectorAll(".pet-card");
+            body.dark nav {
+
+                background: #263630;
+            }
 
 
-        pets.forEach(function(pet) {
+            .pet-grid {
 
-            const name =
-                pet.dataset.name.toLowerCase();
+                grid-template-columns: 1fr;
+            }
 
-            const breed =
-                pet.dataset.breed.toLowerCase();
-
-            const petType =
-                pet.dataset.type;
-
-            const petGender =
-                pet.dataset.gender;
+        }
 
 
-            const matchesSearch =
-                name.includes(search) ||
-                breed.includes(search);
+        /* =========================
+           SMALL MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            header {
+
+                padding: 0 5%;
+            }
 
 
-            const matchesType =
-                type === "" ||
-                petType === type;
+            .logo {
+
+                font-size: 20px;
+            }
 
 
-            const matchesGender =
-                gender === "" ||
-                petGender === gender;
+            .buy-hero {
+
+                padding: 60px 20px 50px;
+            }
 
 
-            if (
-                matchesSearch &&
-                matchesType &&
-                matchesGender
-            ) {
+            .buy-hero h1 {
 
-                pet.style.display = "block";
+                font-size: 32px;
+            }
 
-            } else {
 
-                pet.style.display = "none";
+            .buy-hero p {
+
+                font-size: 15px;
+            }
+
+
+            .search-section {
+
+                padding-left: 5%;
+
+                padding-right: 5%;
+            }
+
+
+            main {
+
+                padding: 20px 5% 50px;
+            }
+
+
+            .search-box {
+
+                flex-direction: column;
+            }
+
+
+            .search-box input,
+            .search-box select {
+
+                width: 100%;
+            }
+
+
+            .section-title h2 {
+
+                font-size: 27px;
+            }
+
+
+            .pet-card {
+
+                min-height: 510px;
+            }
+
+
+            .card-buttons {
+
+                flex-direction: column;
+            }
+
+
+            .cta {
+
+                padding: 40px 20px;
+            }
+
+
+            .modal-content {
+
+                padding: 25px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header>
+
+        <div class="logo">
+            Adoptivers
+        </div>
+
+
+        <!-- MOBILE MENU -->
+
+        <button class="menu-toggle"
+                id="menuToggle"
+                aria-label="Toggle navigation">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+        <nav id="navbar">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="adopt.html">
+                Adopt
+            </a>
+
+            <a href="Buying.html" class="active">
+                Buying
+            </a>
+
+            <a href="selling.html">
+                Selling
+            </a>
+
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </nav>
+
+
+        <!-- DARK MODE -->
+
+        <button id="themeToggle"
+                class="theme-toggle"
+                aria-label="Toggle dark mode">
+
+            🌙
+
+        </button>
+
+    </header>
+
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="buy-hero">
+
+        <h1>
+            Find Your Perfect Pet 🐾
+        </h1>
+
+
+        <p>
+
+            Browse pets available for purchase from trusted
+            sellers. Find a loving companion that is right
+            for you and your family.
+
+        </p>
+
+
+        <div class="category-buttons">
+
+            <a href="#dogs">
+                🐶 Dogs
+            </a>
+
+            <a href="#cats">
+                🐱 Cats
+            </a>
+
+            <a href="#rabbits">
+                🐰 Rabbits
+            </a>
+
+            <a href="#lovebirds">
+                🐦 Lovebirds
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SEARCH
+    ========================= -->
+
+    <section class="search-section">
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search by pet name or type..."
+                onkeyup="searchPets()">
+
+
+            <select
+                id="categoryFilter"
+                onchange="searchPets()">
+
+                <option value="all">
+                    All Pets
+                </option>
+
+                <option value="dog">
+                    Dogs
+                </option>
+
+                <option value="cat">
+                    Cats
+                </option>
+
+                <option value="rabbit">
+                    Rabbits
+                </option>
+
+                <option value="lovebird">
+                    Lovebirds
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <main>
+
+
+        <!-- =========================
+             DOGS
+        ========================= -->
+
+        <section
+            class="pet-section"
+            id="dogs">
+
+            <div class="section-title">
+
+                <h2>
+                    🐶 Dogs
+                </h2>
+
+                <p>
+                    Friendly dogs available from our sellers.
+                </p>
+
+            </div>
+
+
+            <div
+                class="pet-grid"
+                id="dogGrid">
+            </div>
+
+
+            <div
+                class="no-results"
+                id="dogEmpty">
+
+                No dogs found.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             CATS
+        ========================= -->
+
+        <section
+            class="pet-section"
+            id="cats">
+
+            <div class="section-title">
+
+                <h2>
+                    🐱 Cats
+                </h2>
+
+                <p>
+                    Cute and loving cats available for purchase.
+                </p>
+
+            </div>
+
+
+            <div
+                class="pet-grid"
+                id="catGrid">
+            </div>
+
+
+            <div
+                class="no-results"
+                id="catEmpty">
+
+                No cats found.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             RABBITS
+        ========================= -->
+
+        <section
+            class="pet-section"
+            id="rabbits">
+
+            <div class="section-title">
+
+                <h2>
+                    🐰 Rabbits
+                </h2>
+
+                <p>
+                    Gentle rabbits looking for caring owners.
+                </p>
+
+            </div>
+
+
+            <div
+                class="pet-grid"
+                id="rabbitGrid">
+            </div>
+
+
+            <div
+                class="no-results"
+                id="rabbitEmpty">
+
+                No rabbits found.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             LOVEBIRDS
+        ========================= -->
+
+        <section
+            class="pet-section"
+            id="lovebirds">
+
+            <div class="section-title">
+
+                <h2>
+                    🐦 Lovebirds
+                </h2>
+
+                <p>
+                    Colorful and cheerful birds available for purchase.
+                </p>
+
+            </div>
+
+
+            <div
+                class="pet-grid"
+                id="lovebirdGrid">
+            </div>
+
+
+            <div
+                class="no-results"
+                id="lovebirdEmpty">
+
+                No lovebirds found.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             CTA
+        ========================= -->
+
+        <section class="cta">
+
+            <h2>
+                Looking for something specific?
+            </h2>
+
+
+            <p>
+
+                Can't find the pet you're looking for?
+                Contact us and we may be able to help you
+                find a suitable pet.
+
+            </p>
+
+
+            <a href="contact.html">
+
+                Contact Adoptivers
+
+            </a>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         PET DETAILS MODAL
+    ========================= -->
+
+    <div
+        class="modal"
+        id="petModal">
+
+
+        <div class="modal-content">
+
+
+            <span
+                class="close"
+                onclick="closeModal()">
+
+                &times;
+
+            </span>
+
+
+            <img
+                id="modalImage"
+                class="modal-image"
+                src=""
+                alt="Pet">
+
+
+            <h2 id="modalName">
+                Pet Name
+            </h2>
+
+
+            <p
+                class="modal-breed"
+                id="modalBreed">
+
+                Pet Type
+
+            </p>
+
+
+            <p>
+                <strong>Age:</strong>
+                <span id="modalAge"></span>
+                years
+            </p>
+
+
+            <p>
+                <strong>Gender:</strong>
+                <span id="modalGender"></span>
+            </p>
+
+
+            <p>
+                <strong>Status:</strong>
+                <span id="modalStatus"></span>
+            </p>
+
+
+            <p>
+                <strong>Price:</strong>
+                Rs. <span id="modalPrice"></span>
+            </p>
+
+
+            <p>
+                <strong>About this pet:</strong>
+            </p>
+
+
+            <p id="modalDescription"></p>
+
+
+            <button
+                class="modal-contact-btn"
+                onclick="contactSeller()">
+
+                Contact Seller
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+
+            © 2026 Adoptivers 🐾 |
+            Connecting Pets With Loving Homes
+
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+
+        /* =========================
+           DOG DATA
+        ========================= */
+
+        const dogs = [
+
+            {
+                name: "Rocky",
+                breed: "Mixed Breed",
+                age: 2,
+                gender: "Male",
+                status: "Available",
+                price: 45000,
+                image: "dog2.jpg",
+                description:
+                    "A friendly and energetic dog who enjoys outdoor activities, playing and spending time with people."
+            },
+
+
+            {
+                name: "Daisy",
+                breed: "Tottweiler",
+                age: 3,
+                gender: "Female",
+                status: "Available",
+                price: 38000,
+                image: "rott.jpg",
+                description:
+                    "A gentle and affectionate dog with a calm personality who would be a wonderful family companion."
+            },
+
+
+            {
+                name: "Charlie",
+                breed: "Golden Retriever",
+                age: 4,
+                gender: "Male",
+                status: "Pending",
+                price: 42000,
+                image: "gold.jpg",
+                description:
+                    "A loyal and intelligent dog who enjoys walks, playing and spending time with his owners."
+            }
+
+        ];
+
+
+
+        /* =========================
+           CAT DATA
+        ========================= */
+
+        const cats = [
+
+            {
+                name: "Tom",
+                breed: "Domestic Shorthair",
+                age: 2,
+                gender: "Female",
+                status: "Available",
+                price: 18000,
+                image: "tom.jpg",
+                description:
+                    "A sweet and gentle cat who enjoys quiet environments and receiving attention from people."
+            },
+
+
+            {
+                name: "Olive",
+                breed: "Domestic Shorthair",
+                age: 1,
+                gender: "Male",
+                status: "Available",
+                price: 15000,
+                image: "oliiivee.jpg",
+                description:
+                    "A playful and active cat who loves toys, exploring and interacting with people."
+            },
+
+
+            {
+                name: "Luna",
+                breed: "Siamese",
+                age: 3,
+                gender: "Female",
+                status: "Available",
+                price: 20000,
+                image: "luna.jpg",
+                description:
+                    "A calm and affectionate cat who enjoys relaxing and spending time with her family."
+            },
+
+
+            {
+                name: "Simba",
+                breed: "Persian",
+                age: 2,
+                gender: "Male",
+                status: "Pending",
+                price: 22000,
+                image: "simba.jpg",
+                description:
+                    "A friendly cat with a playful personality who loves attention and comfortable surroundings."
+            }
+
+        ];
+
+
+
+        /* =========================
+           RABBIT DATA
+        ========================= */
+
+        const rabbits = [
+
+            {
+                name: "Bunny",
+                breed: "Domestic Rabbit",
+                age: 1,
+                gender: "Female",
+                status: "Available",
+                price: 7000,
+                image: "rabit01.jpg",
+                description:
+                    "A gentle and adorable rabbit who enjoys peaceful surroundings and careful attention."
+            },
+
+
+            {
+                name: "Coco",
+                breed: "Domestic Rabbit",
+                age: 2,
+                gender: "Male",
+                status: "Available",
+                price: 6500,
+                image: "rabit02.jpg",
+                description:
+                    "A friendly rabbit with a playful personality who enjoys exploring and spending time with people."
+            }
+
+        ];
+
+
+
+        /* =========================
+           LOVEBIRD DATA
+        ========================= */
+
+        const lovebirds = [
+
+            {
+                name: "Sunny",
+                breed: "Lovebird",
+                age: 1,
+                gender: "Male",
+                status: "Available",
+                price: 4000,
+                image: "lovebird01.jpg",
+                description:
+                    "A cheerful and active lovebird who enjoys interaction, attention and company."
+            },
+
+
+        ];
+
+
+
+        /* =========================
+           CURRENT SELECTED PET
+        ========================= */
+
+        let selectedPet = null;
+
+
+
+        /* =========================
+           DISPLAY PETS
+        ========================= */
+
+        function displayPets(
+            petList,
+            gridId,
+            emptyId,
+            emoji
+        ) {
+
+
+            const grid =
+                document.getElementById(gridId);
+
+
+            const empty =
+                document.getElementById(emptyId);
+
+
+            grid.innerHTML = "";
+
+
+            if (petList.length === 0) {
+
+                empty.style.display = "block";
+
+                return;
+            }
+
+
+            empty.style.display = "none";
+
+
+            petList.forEach(function(pet) {
+
+
+                const card =
+                    document.createElement("div");
+
+
+                card.className = "pet-card";
+
+
+                const statusClass =
+                    pet.status.toLowerCase();
+
+
+                const petIndex =
+                    getPetIndex(pet);
+
+
+                card.innerHTML = `
+
+                    <img
+                        class="pet-image"
+                        src="${pet.image}"
+                        alt="${pet.name}">
+
+
+                    <div class="pet-content">
+
+
+                        <h3 class="pet-name">
+
+                            ${emoji} ${pet.name}
+
+                        </h3>
+
+
+                        <p class="breed">
+
+                            ${pet.breed}
+
+                        </p>
+
+
+                        <div class="pet-info">
+
+
+                            <p>
+
+                                <strong>Age:</strong>
+                                ${pet.age} years
+
+                            </p>
+
+
+                            <p>
+
+                                <strong>Gender:</strong>
+                                ${pet.gender}
+
+                            </p>
+
+                        </div>
+
+
+                        <p class="description">
+
+                            ${pet.description}
+
+                        </p>
+
+
+                        <p class="price">
+
+                            Rs. ${pet.price.toLocaleString()}
+
+                            <span>
+                                | Pet Price
+                            </span>
+
+                        </p>
+
+
+                        <span
+                            class="status ${statusClass}">
+
+                            ${pet.status}
+
+                        </span>
+
+
+                        <div class="card-buttons">
+
+
+                            <button
+                                class="btn details-btn"
+                                onclick="openDetails(${petIndex})">
+
+                                View Details
+
+                            </button>
+
+
+                            <button
+                                class="btn contact-btn"
+                                onclick="contactPet('${pet.name}')">
+
+                                Contact Seller
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                grid.appendChild(card);
+
+            });
+
+        }
+
+
+
+        /* =========================
+           GET PET INDEX
+        ========================= */
+
+        function getPetIndex(pet) {
+
+            const allPets = [
+                ...dogs,
+                ...cats,
+                ...rabbits,
+                ...lovebirds
+            ];
+
+            return allPets.indexOf(pet);
+
+        }
+
+
+
+        /* =========================
+           GET PET BY INDEX
+        ========================= */
+
+        function getPetByIndex(index) {
+
+            const allPets = [
+                ...dogs,
+                ...cats,
+                ...rabbits,
+                ...lovebirds
+            ];
+
+            return allPets[index];
+
+        }
+
+
+
+        /* =========================
+           DISPLAY ALL PETS
+        ========================= */
+
+        function displayAllPets() {
+
+            displayPets(
+                dogs,
+                "dogGrid",
+                "dogEmpty",
+                "🐶"
+            );
+
+
+            displayPets(
+                cats,
+                "catGrid",
+                "catEmpty",
+                "🐱"
+            );
+
+
+            displayPets(
+                rabbits,
+                "rabbitGrid",
+                "rabbitEmpty",
+                "🐰"
+            );
+
+
+            displayPets(
+                lovebirds,
+                "lovebirdGrid",
+                "lovebirdEmpty",
+                "🐦"
+            );
+
+        }
+
+
+
+        /* =========================
+           SEARCH PETS
+        ========================= */
+
+        function searchPets() {
+
+
+            const searchText =
+                document
+                .getElementById("searchInput")
+                .value
+                .toLowerCase()
+                .trim();
+
+
+            const category =
+                document
+                .getElementById("categoryFilter")
+                .value;
+
+
+            function filterPets(pets) {
+
+                return pets.filter(function(pet) {
+
+                    return (
+
+                        pet.name
+                        .toLowerCase()
+                        .includes(searchText)
+
+                        ||
+
+                        pet.breed
+                        .toLowerCase()
+                        .includes(searchText)
+
+                        ||
+
+                        pet.description
+                        .toLowerCase()
+                        .includes(searchText)
+
+                    );
+
+                });
 
             }
 
-        });
 
-    }
+            let filteredDogs =
+                filterPets(dogs);
 
-</script>
-```
+
+            let filteredCats =
+                filterPets(cats);
+
+
+            let filteredRabbits =
+                filterPets(rabbits);
+
+
+            let filteredLovebirds =
+                filterPets(lovebirds);
+
+
+            if (category !== "all") {
+
+
+                if (category !== "dog") {
+
+                    filteredDogs = [];
+
+                }
+
+
+                if (category !== "cat") {
+
+                    filteredCats = [];
+
+                }
+
+
+                if (category !== "rabbit") {
+
+                    filteredRabbits = [];
+
+                }
+
+
+                if (category !== "lovebird") {
+
+                    filteredLovebirds = [];
+
+                }
+
+            }
+
+
+            displayPets(
+                filteredDogs,
+                "dogGrid",
+                "dogEmpty",
+                "🐶"
+            );
+
+
+            displayPets(
+                filteredCats,
+                "catGrid",
+                "catEmpty",
+                "🐱"
+            );
+
+
+            displayPets(
+                filteredRabbits,
+                "rabbitGrid",
+                "rabbitEmpty",
+                "🐰"
+            );
+
+
+            displayPets(
+                filteredLovebirds,
+                "lovebirdGrid",
+                "lovebirdEmpty",
+                "🐦"
+            );
+
+        }
+
+
+
+        /* =========================
+           OPEN DETAILS MODAL
+        ========================= */
+
+        function openDetails(index) {
+
+
+            selectedPet =
+                getPetByIndex(index);
+
+
+            if (!selectedPet) {
+                return;
+            }
+
+
+            document
+                .getElementById("modalImage")
+                .src = selectedPet.image;
+
+
+            document
+                .getElementById("modalImage")
+                .alt = selectedPet.name;
+
+
+            document
+                .getElementById("modalName")
+                .textContent =
+                "🐾 " + selectedPet.name;
+
+
+            document
+                .getElementById("modalBreed")
+                .textContent =
+                selectedPet.breed;
+
+
+            document
+                .getElementById("modalAge")
+                .textContent =
+                selectedPet.age;
+
+
+            document
+                .getElementById("modalGender")
+                .textContent =
+                selectedPet.gender;
+
+
+            document
+                .getElementById("modalStatus")
+                .textContent =
+                selectedPet.status;
+
+
+            document
+                .getElementById("modalPrice")
+                .textContent =
+                selectedPet.price.toLocaleString();
+
+
+            document
+                .getElementById("modalDescription")
+                .textContent =
+                selectedPet.description;
+
+
+            document
+                .getElementById("petModal")
+                .style.display =
+                "flex";
+
+
+            document.body.style.overflow =
+                "hidden";
+
+        }
+
+
+
+        /* =========================
+           CLOSE MODAL
+        ========================= */
+
+        function closeModal() {
+
+
+            document
+                .getElementById("petModal")
+                .style.display =
+                "none";
+
+
+            document.body.style.overflow =
+                "";
+
+        }
+
+
+
+        /* =========================
+           CONTACT PET
+        ========================= */
+
+        function contactPet(petName) {
+
+
+            alert(
+                "You selected " +
+                petName +
+                ". Please use the Contact page to get in touch with the seller."
+            );
+
+        }
+
+
+
+        /* =========================
+           CONTACT SELLER FROM MODAL
+        ========================= */
+
+        function contactSeller() {
+
+
+            if (selectedPet) {
+
+                window.location.href =
+                    "contact.html";
+
+            }
+
+        }
+
+
+
+        /* =========================
+           MOBILE MENU
+        ========================= */
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+
+        const navbar =
+            document.getElementById("navbar");
+
+
+        menuToggle.addEventListener(
+            "click",
+            function() {
+
+                navbar.classList.toggle("active");
+
+            }
+        );
+
+
+
+        /* =========================
+           CLOSE MOBILE MENU
+        ========================= */
+
+        document
+            .querySelectorAll("#navbar a")
+            .forEach(function(link) {
+
+                link.addEventListener(
+                    "click",
+                    function() {
+
+                        navbar.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+            });
+
+
+
+        /* =========================
+           DARK MODE
+        ========================= */
+
+        const themeToggle =
+            document.getElementById("themeToggle");
+
+
+        themeToggle.addEventListener(
+            "click",
+            function() {
+
+
+                document.body
+                    .classList
+                    .toggle("dark");
+
+
+                if (
+                    document.body
+                    .classList
+                    .contains("dark")
+                ) {
+
+
+                    themeToggle.innerHTML =
+                        "☀️";
+
+                }
+
+                else {
+
+
+                    themeToggle.innerHTML =
+                        "🌙";
+
+                }
+
+            }
+        );
+
+
+
+        /* =========================
+           CLOSE MODAL OUTSIDE
+        ========================= */
+
+        window.addEventListener(
+            "click",
+            function(event) {
+
+
+                const modal =
+                    document.getElementById(
+                        "petModal"
+                    );
+
+
+                if (
+                    event.target === modal
+                ) {
+
+                    closeModal();
+
+                }
+
+            }
+        );
+
+
+
+        /* =========================
+           ESCAPE KEY
+        ========================= */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Escape") {
+
+                    closeModal();
+
+                }
+
+            }
+        );
+
+
+
+        /* =========================
+           INITIAL DISPLAY
+        ========================= */
+
+        displayAllPets();
+
+    </script>
 
 </body>
 
